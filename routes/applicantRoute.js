@@ -81,40 +81,4 @@ router.get("/aggregateddatabase", (req, res) => {
     });
 });
 
-router.get("/aggregateddatabase/:ambassadorIdentifier", (req, res) => {
-    const queryString = `SELECT * FROM users INNER JOIN ambassadors ON users.user_ambassador_id = ambassadors.ambassador__applicant_id  WHERE user_ambassador_id = ${req.params.ambassadorIdentifier};`;
-
-    connection.query(queryString, function(err, results){
-        if (err){
-            console.log("Search Error");
-        } else{            
-            res.json(results);
-        }
-    });
-});
-
-router.get("/applicants", (req, res) => {
-    const queryString = `SELECT * FROM applicants;`;
-
-    connection.query(queryString, function(err, results){
-        if (err){
-            console.log("Search Error");
-        } else{            
-            res.json(results);
-        }
-    });
-});
-
-router.get("/applicants/:applicantIdentifier", (req, res) => {
-    const queryString = `SELECT * FROM users INNER JOIN ambassadors ON users.user_ambassador_id = ambassadors.ambassador__applicant_id  WHERE user_ambassador_id = ${req.params.applicantIdentifier};`;
-
-    connection.query(queryString, function(err, results){
-        if (err){
-            console.log("Search Error");
-        } else{            
-            res.json(results);
-        }
-    });
-});
-
 module.exports = router;

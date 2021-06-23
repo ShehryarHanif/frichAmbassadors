@@ -10,8 +10,10 @@ app.use(express.urlencoded({extended : false}));
 app.use(express.static(path.join(__dirname, "client/build")));
 
 const dataRoutes = require("./routes/dataRoutes.js");
+const applicantRoutes = require("./routes/applicantRoutes.js")
 
 app.use("/api", dataRoutes);
+app.use("/applicant", applicantRoutes);
 
 app.get("*", function(req,res){
     res.sendFile(path.join(__dirname+"/client/build/index.html"));

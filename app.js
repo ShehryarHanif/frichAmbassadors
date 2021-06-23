@@ -25,17 +25,18 @@ connection.connect(function(error){
 
 const app = express();
 
-app.use(express.static(path.resolve(__dirname + "/public")));
 app.use(express.urlencoded({extended : false}));
 
-app.set("view engine", "hbs");
+app.use(express.static(path.join(__dirname, "client/build")));
 
-app.get("/", function(req, res){
-    res.send("Hello World");
+app.get('/api/getList', (req,res) => {
+    var list = ["item1", "item2", "item3"];
+    res.json(list);
+    console.log('Sent list of items');
 });
 
-app.get("/*", function(req, res){
-    res.redirect("/");
+app.get("*", function(req,res){
+    res.sendFile(path.join(__dirname+"/client/build/index.html"));
 });
 
 app.listen(process.env.PORT || 3000, function () {

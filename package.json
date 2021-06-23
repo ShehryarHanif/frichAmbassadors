@@ -1,7 +1,7 @@
 {
   "name": "frich-ambassadors-website",
   "version": "1.0.0",
-  "description": "Website for Frich's ambassadors",
+  "description": "Website for Frich ambassadors",
   "main": "src/app.js",
   "dependencies": {
     "chart": "^0.1.2",
@@ -29,7 +29,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node app.js",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "repository": {
     "type": "git",

@@ -10,7 +10,7 @@ const app = express();
 
 app.use(morgan("combined"));
 
-app.use(helmet());
+// app.use(helmet());
 
 // const whitelist = ["http://localhost:3000/", "https://frich-ambassadors.herokuapp.com/"]
 
@@ -31,7 +31,7 @@ app.use(express.urlencoded({extended : false}));
 app.use(express.static(path.join(__dirname, "client/build")));
 
 const dataRoutes = require("./routes/dataRoutes.js");
-const applicantRoutes = require("./routes/applicantRoute.js")
+const applicantRoutes = require("./routes/applicantRoute.js");
 
 app.use("/api", dataRoutes);
 app.use("/applicant", applicantRoutes);
@@ -43,6 +43,16 @@ app.use("/applicant", applicantRoutes);
 
 //     console.log('Sent list of items');
 // });
+
+const mysql = require("mysql");
+
+const connectionRequirements = {
+    host : process.env.RDS_HOSTNAME,
+    user : process.env.RDS_USERNAME,
+    password: process.env.RDS_PASSWORD,
+    port: process.env.RDS_PORT,
+    database: process.env.RDS_DATABASE
+};
 
 app.get("*", function(req,res){
     res.sendFile(path.join(__dirname+"/client/build/index.html"));

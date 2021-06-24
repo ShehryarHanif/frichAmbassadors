@@ -4,26 +4,16 @@
   "description": "Website for Frich ambassadors",
   "main": "src/app.js",
   "dependencies": {
-    "chart": "^0.1.2",
-    "chart.js": "^2.9.4",
     "connect-flash": "^0.1.1",
-    "connect-mongodb-session": "^2.4.1",
     "cors": "^2.8.5",
-    "d3": "^6.6.2",
     "dotenv": "^8.2.0",
-    "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "faker": "^5.5.3",
-    "hbs": "^4.1.2",
     "helmet": "^4.6.0",
-    "jquery": "^3.6.0",
-    "mongoose": "^5.12.2",
-    "mongoose-url-slugs": "^1.0.2",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
-    "passport": "^0.4.1",
-    "passport-local-mongoose": "^6.1.0"
+    "passport": "^0.4.1"
   },
   "devDependencies": {
     "chai": "^4.3.4",

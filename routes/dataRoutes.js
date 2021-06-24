@@ -21,6 +21,9 @@ connection.connect(function(error){
 
 const router = express.Router({mergeParams: true});
 
+router.use(express.json());
+router.use(express.urlencoded({ extended: true }));
+
 router.get("/applicants", (req, res) => {
     const queryString = "SELECT * FROM applicants;";
 
@@ -58,7 +61,7 @@ router.get("/users", (req, res) => {
 });
 
 router.get("/ambassadors/:ambassadorIdentifier", (req, res) => {
-    const queryString = "SELECT * FROM users WHERE user_ambassador_id = ?;";
+    const queryString = "SELECT * FROM users WHERE user_ambassador_id = ? ORDER BY user_created_at DESC;";
 
     connection.query(queryString, req.params.ambassadorIdentifier, function(err, results){
         if (err){
@@ -108,7 +111,7 @@ router.get("/applicants", (req, res) => {
 router.get("/applicants/:applicantIdentifier", (req, res) => {
     const queryString = "SELECT * FROM users INNER JOIN ambassadors ON users.user_ambassador_id = ambassadors.ambassador__applicant_id  WHERE user_ambassador_id = ?;";
 
-    connection.query(queryString,  req.params.applicantIdentifier, function(err, results){
+    connection.query(queryString, req.params.applicantIdentifier, function(err, results){
         if (err){
             console.log("Search Error");
         } else{            
@@ -116,5 +119,27 @@ router.get("/applicants/:applicantIdentifier", (req, res) => {
         }
     });
 });
+
+router.post("/newuser", (req, res) => {
+    const insertQuery = `INSERT INTO users SET ?;`;
+    
+    const values = {
+        "user_name": req.body.user_name,
+        "user_email": req.body.user_email,
+        "user_registration_status": req.body.user_registration_status,
+        "user_ambassador_id": req.body.user_ambassador_id,
+        "user_referral_code": req.body.user_referral_code
+    };
+
+    connection.query(insertQuery, values, function(err, results){
+        if (err){
+            console.log("Insertion Error");
+
+            console.log(err);
+        } else{            
+            res.json(results);
+        }
+    });
+})
 
 module.exports = router;

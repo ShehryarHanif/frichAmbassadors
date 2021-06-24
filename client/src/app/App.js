@@ -9,12 +9,13 @@ const App = () => {
   return (
     <Router>
       <Switch>
-        <Route exact exact path="/" component={ HomePage }/>
+        <Route exact path="/" component={ HomePage }/>
         {/* <Route exact path="/application" component={ ApplicationPage }/>
         <Route exact path="/authentication" component={ AuthenticationPage }/> */}
         <Route exact path="/ambassador" component={ AmbassadorPage }/>
         {/* <Route exact path="/ambassador/edit" component={ AmbassadorEditPage }/>
         <Route exact path="/ambassador/users" component={ AmbassadorUsersPage }/>
+        <Route exact path="/ambassador/users/user" component={ AmbassadorUserPage }/>
         <Route exact path="/ambassador/notifications" component={ AmbassadorNotificationsPage }/>
         <Route exact path="/admin/authentication" component={ AdminAuthenticationPage }/>
         <Route exact path="/admin/main" component={ AdminMainPage }/>

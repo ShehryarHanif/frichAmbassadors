@@ -58,9 +58,9 @@ router.get("/users", (req, res) => {
 });
 
 router.get("/ambassadors/:ambassadorIdentifier", (req, res) => {
-    const queryString = `SELECT * FROM users WHERE user_ambassador_id = ${req.params.ambassadorIdentifier};`;
+    const queryString = "SELECT * FROM users WHERE user_ambassador_id = ?;";
 
-    connection.query(queryString, function(err, results){
+    connection.query(queryString, req.params.ambassadorIdentifier, function(err, results){
         if (err){
             console.log("Search Error");
         } else{            
@@ -70,7 +70,7 @@ router.get("/ambassadors/:ambassadorIdentifier", (req, res) => {
 });
 
 router.get("/aggregateddatabase", (req, res) => {
-    const queryString = `SELECT * FROM users INNER JOIN ambassadors ON users.user_ambassador_id = ambassadors.ambassador__applicant_id;`;
+    const queryString = "SELECT * FROM users INNER JOIN ambassadors ON users.user_ambassador_id = ambassadors.ambassador__applicant_id;";
 
     connection.query(queryString, function(err, results){
         if (err){
@@ -82,9 +82,9 @@ router.get("/aggregateddatabase", (req, res) => {
 });
 
 router.get("/aggregateddatabase/:ambassadorIdentifier", (req, res) => {
-    const queryString = `SELECT * FROM users INNER JOIN ambassadors ON users.user_ambassador_id = ambassadors.ambassador__applicant_id  WHERE user_ambassador_id = ${req.params.ambassadorIdentifier};`;
+    const queryString = "SELECT * FROM users INNER JOIN ambassadors ON users.user_ambassador_id = ambassadors.ambassador__applicant_id  WHERE user_ambassador_id = ?;";
 
-    connection.query(queryString, function(err, results){
+    connection.query(queryString, req.params.ambassadorIdentifier, function(err, results){
         if (err){
             console.log("Search Error");
         } else{            
@@ -94,7 +94,7 @@ router.get("/aggregateddatabase/:ambassadorIdentifier", (req, res) => {
 });
 
 router.get("/applicants", (req, res) => {
-    const queryString = `SELECT * FROM applicants;`;
+    const queryString = "SELECT * FROM applicants;";
 
     connection.query(queryString, function(err, results){
         if (err){
@@ -106,9 +106,9 @@ router.get("/applicants", (req, res) => {
 });
 
 router.get("/applicants/:applicantIdentifier", (req, res) => {
-    const queryString = `SELECT * FROM users INNER JOIN ambassadors ON users.user_ambassador_id = ambassadors.ambassador__applicant_id  WHERE user_ambassador_id = ${req.params.applicantIdentifier};`;
+    const queryString = "SELECT * FROM users INNER JOIN ambassadors ON users.user_ambassador_id = ambassadors.ambassador__applicant_id  WHERE user_ambassador_id = ?;";
 
-    connection.query(queryString, function(err, results){
+    connection.query(queryString,  req.params.applicantIdentifier, function(err, results){
         if (err){
             console.log("Search Error");
         } else{            

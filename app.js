@@ -44,16 +44,6 @@ app.use("/applicant", applicantRoutes);
 //     console.log('Sent list of items');
 // });
 
-const mysql = require("mysql");
-
-const connectionRequirements = {
-    host : process.env.RDS_HOSTNAME,
-    user : process.env.RDS_USERNAME,
-    password: process.env.RDS_PASSWORD,
-    port: process.env.RDS_PORT,
-    database: process.env.RDS_DATABASE
-};
-
 app.get("*", function(req,res){
     res.sendFile(path.join(__dirname+"/client/build/index.html"));
 });

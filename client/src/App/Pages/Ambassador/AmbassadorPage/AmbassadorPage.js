@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 
 import axios from "axios";
 
@@ -6,11 +6,13 @@ function AmbassadorPage(){
   const [users, setUsers] = useState([]);
   const [ambassador, setAmbassador] = useState({});
 
-  useEffect(() => {
+  const getData = () => {
     axios.get(`/api/ambassadors/${ambassador["ambassador_id"] || "1"}`)
       .then((response) => setUsers(response.data))
         .catch((err) => console.log(err));
-  });
+  };
+
+  useEffect(getData, []);
   
   const [newUserName, setNewUserName] = useState("");
   const [newUserEmail, setNewUserEmail] = useState("");
@@ -40,17 +42,17 @@ function AmbassadorPage(){
       data: formData,
       headers: {"Content-Type": "application/json"}
     })
-      .then((response => {
-        console.log(response);
+      .then(() => {
+        getData();
 
         setNewUserName("");
         setNewUserEmail("");
-      }))
+      })
         .catch((error) => console.log(error));
   };
 
   return (
-    <div>
+    <Fragment>
       <form method="POST" onSubmit={ submissionHandler }>
         <label>Name</label>
         <input type="text" value={ newUserName } onChange={ nameChangeHandler } />
@@ -76,7 +78,7 @@ function AmbassadorPage(){
           )
         }) }
       </table>
-    </div>
+    </Fragment>
 
   );
 }

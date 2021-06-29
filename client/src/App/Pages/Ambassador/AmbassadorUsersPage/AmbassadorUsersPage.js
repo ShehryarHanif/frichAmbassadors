@@ -2,7 +2,7 @@ import { useState, useEffect, Fragment } from "react";
 
 import axios from "axios";
 
-function AmbassadorPage(){    
+function AmbassadorUsersPage(){    
   const [users, setUsers] = useState([]);
   const [ambassador, setAmbassador] = useState({});
 
@@ -83,4 +83,4 @@ function AmbassadorPage(){
   );
 }
 
-export default AmbassadorPage;
+export default AmbassadorUsersPage;

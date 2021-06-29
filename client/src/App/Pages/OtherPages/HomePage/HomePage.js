@@ -5,7 +5,7 @@ const HomePage = () => {
     <div className="App">
       <h1>Project Home</h1>
 
-      <Link to={"./ambassador"}>
+      <Link to={"./ambassador/users"}>
         <button variant="raised">
             My List
         </button>

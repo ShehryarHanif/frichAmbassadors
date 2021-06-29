@@ -31,10 +31,8 @@ app.use(express.urlencoded({extended : false}));
 app.use(express.static(path.join(__dirname, "client/build")));
 
 const dataRoutes = require("./routes/dataRoutes.js");
-const applicantRoutes = require("./routes/applicantRoute.js");
 
 app.use("/api", dataRoutes);
-app.use("/applicant", applicantRoutes);
 
 // app.get('/api/getList', (req,res) => {
 //     const list = ["item1", "item2", "item3"];

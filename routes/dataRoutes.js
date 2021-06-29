@@ -25,7 +25,7 @@ router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
 
 router.get("/applicants", (req, res) => {
-    const queryString = "SELECT * FROM applicants;";
+    const queryString = "SELECT * FROM applicants ORDER BY applicant_created_at DESC;;";
 
     connection.query(queryString, function(err, results){
         if (err){
@@ -37,7 +37,7 @@ router.get("/applicants", (req, res) => {
 });
 
 router.get("/ambassadors", (req, res) => {
-    const queryString = "SELECT * FROM ambassadors;";
+    const queryString = "SELECT * FROM ambassadors ORDER BY applicant_created_at DESC;";
 
     connection.query(queryString, function(err, results){
         if (err){
@@ -96,10 +96,12 @@ router.get("/aggregateddatabase/:ambassadorIdentifier", (req, res) => {
     });
 });
 
-router.get("/applicants", (req, res) => {
-    const queryString = "SELECT * FROM applicants;";
+router.post("/applicants/status/:identifier", (req, res) => {
+    const queryString = "UPDATE applicants SET applicant_registration_status = ? WHERE applicant_id = ?";
 
-    connection.query(queryString, function(err, results){
+    console.log("here");
+
+    connection.query(queryString, [req.body.status_update, req.body.applicant_id], function(err, results){
         if (err){
             console.log("Search Error");
         } else{            
@@ -109,13 +111,13 @@ router.get("/applicants", (req, res) => {
 });
 
 router.get("/applicants/:applicantIdentifier", (req, res) => {
-    const queryString = "SELECT * FROM users INNER JOIN ambassadors ON users.user_ambassador_id = ambassadors.ambassador__applicant_id  WHERE user_ambassador_id = ?;";
+    const queryString = "SELECT * FROM applicants WHERE applicant_id = ?;";
 
     connection.query(queryString, req.params.applicantIdentifier, function(err, results){
         if (err){
             console.log("Search Error");
         } else{            
-            res.json(results);
+            res.json(results[0]);
         }
     });
 });
@@ -168,44 +170,43 @@ router.post("/newapplicant", (req, res) => {
     });
 });
 
+// router.post("/ambassador", (req, res) => {
+//     const selectionQuery = `SELECT * from applicants WHERE applicant_id = ${req.body.applicant_id}`;
 
-router.post("/ambassador", (req, res) => {
-    const selectionQuery = `SELECT * from applicants WHERE applicant_id = ${req.body.applicant_id}`;
+//     connection.query(selectionQuery, function(err, results){
+//         if (err){
+//             console.log("Selection Error");
 
-    connection.query(selectionQuery, function(err, results){
-        if (err){
-            console.log("Selection Error");
-
-            console.log(err);
-        } else{
-            const insertionQuery = "INSERT INTO ambassadors SET ?;";
+//             console.log(err);
+//         } else{
+//             const insertionQuery = "INSERT INTO ambassadors SET ?;";
             
-            const returnedApplicant = results[0];
+//             const returnedApplicant = results[0];
 
-            const requiredValues = {
-                "ambassador_first_name": returnedApplicant["applicant_first_name"],
-                "ambassador_last_name": returnedApplicant["applicant_last_name"],
-                "ambassador_email": returnedApplicant["applicant_email"],
-                "ambassador_instagram": returnedApplicant["applicant_instagram"],
-                "ambassador_tiktok": returnedApplicant["applicant_tiktok"],
-                "ambassador_referral_code": returnedApplicant["applicant_referral_code"],
-                "ambassador_question_one": returnedApplicant["application_question_one"],
-                "ambassador_question_two": returnedApplicant["applicant_question_two"]
-            };
+//             const requiredValues = {
+//                 "ambassador_first_name": returnedApplicant["applicant_first_name"],
+//                 "ambassador_last_name": returnedApplicant["applicant_last_name"],
+//                 "ambassador_email": returnedApplicant["applicant_email"],
+//                 "ambassador_instagram": returnedApplicant["applicant_instagram"],
+//                 "ambassador_tiktok": returnedApplicant["applicant_tiktok"],
+//                 "ambassador_referral_code": returnedApplicant["applicant_referral_code"],
+//                 "ambassador_question_one": returnedApplicant["application_question_one"],
+//                 "ambassador_question_two": returnedApplicant["applicant_question_two"]
+//             };
             
-            connection.query(insertionQuery, requiredValues, function(error, newResults){
-                if (error){
-                    console.log("Insertion Error");
+//             connection.query(insertionQuery, requiredValues, function(error, newResults){
+//                 if (error){
+//                     console.log("Insertion Error");
 
-                    console.log(error);
-                } else{
-                    const applicantIdentifier = results[0]["applicant_id"];
+//                     console.log(error);
+//                 } else{
+//                     const applicantIdentifier = results[0]["applicant_id"];
 
                     
-                }
-            });
-        }
-    });
-});
+//                 }
+//             });
+//         }
+//     });
+// });
 
 module.exports = router;

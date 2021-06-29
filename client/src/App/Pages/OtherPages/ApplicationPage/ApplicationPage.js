@@ -104,7 +104,7 @@ function ApplicationPage(props){
       <label>Question One</label>
       <textarea cols="40" rows="10" maxlength="300" value={ applicationQuestionOne } onChange={ questionOneChangeHandler } />
 
-      <label>Question One</label>
+      <label>Question Two</label>
       <textarea cols="40" rows="10" maxlength="300" value={ applicationQuestionTwo } onChange={ questionTwoChangeHandler } />
 
       <button type="submit">Apply</button>

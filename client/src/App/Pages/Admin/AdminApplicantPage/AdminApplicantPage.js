@@ -16,7 +16,7 @@ function AdminApplicantPage(props){
 
   useEffect(getApplicant, []);
 
-  const statusChanger = (newStatus) => {
+ const statusChanger = (newStatus) => {
     axios({
       method: "post",
       url: `/api/applicants/status/${applicant["applicant_id"]}`,
@@ -29,7 +29,7 @@ function AdminApplicantPage(props){
       .then(() => {
         getApplicant();
       })
-        .catch((error) => console.log(error));
+        .catch((error) => console.log(error)); 
   };
 
   const rejectHandler = () => {
@@ -46,9 +46,20 @@ function AdminApplicantPage(props){
   };
 
   const acceptHandler = () => {
-    
-
-    statusChanger("accepted");
+    if(applicant["registration_status"] !== "accepted"){
+      axios({
+        method: "post",
+        url: `/api/applicants/ambassadorcreator/${applicant["applicant_id"]}`,
+        data: applicant,
+        headers: {"Content-Type": "application/json"}
+      })
+        .then(() => {
+          statusChanger("accepted");
+  
+          getApplicant();
+        })
+          .catch((error) => console.log(error)); 
+    }
   };
 
   return (

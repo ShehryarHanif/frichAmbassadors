@@ -37,7 +37,7 @@ router.get("/applicants", (req, res) => {
 });
 
 router.get("/ambassadors", (req, res) => {
-    const queryString = "SELECT * FROM ambassadors ORDER BY applicant_created_at DESC;";
+    const queryString = "SELECT * FROM ambassadors ORDER BY ambassador_created_at DESC;";
 
     connection.query(queryString, function(err, results){
         if (err){
@@ -108,6 +108,34 @@ router.post("/applicants/status/:identifier", (req, res) => {
             res.json(results);
         }
     });
+});
+
+router.post("/applicants/ambassadorcreator/:identifier", (req, res) => {
+    const insertQuery = `INSERT INTO ambassadors SET ?;`;
+
+    const setPassword = null;
+    
+    const values = {
+        "ambassador_first_name": req.body.applicant_first_name,
+        "ambassador_last_name": req.body.applicant_last_name,
+        "ambassador_email": req.body.applicant_email,
+        "ambassador_instagram": `${req.body.applicant_instagram}`,
+        "ambassador_tiktok": `${req.body.applicant_tiktok}`,
+        "ambassador_referral_code": req.body.applicant_referral_code,
+        "ambassador_password": setPassword || "genericPassword",
+        "ambassador_tier": "bronze",
+        "ambassador_applicant_id": req.body.applicant_id
+    };
+
+    connection.query(insertQuery, values, function(err, results){
+        if (err){
+            console.log("Insertion Error");
+
+            console.log(err);
+        } else{            
+            res.json(results);
+        }
+    });  
 });
 
 router.get("/applicants/:applicantIdentifier", (req, res) => {

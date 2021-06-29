@@ -225,6 +225,25 @@ router.post("/newnotification", (req, res) => {
     });
 });
 
+router.post("/deletenotification/:notificationidentifier", (req, res) => {
+    const deletionQuery = `DELETE FROM notifications WHERE ?;`;
+
+    const value = {
+        "notification_id": req.body.notification_id
+    };
+
+    connection.query(deletionQuery, value, function(err, results){
+        if (err){
+            console.log("Deletion Error");
+
+            console.log(err);
+        } else{            
+            res.json(results);
+        }
+    });
+});
+
+
 // router.post("/ambassador", (req, res) => {
 //     const selectionQuery = `SELECT * from applicants WHERE applicant_id = ${req.body.applicant_id}`;
 

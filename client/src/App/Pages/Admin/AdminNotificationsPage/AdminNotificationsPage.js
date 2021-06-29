@@ -38,6 +38,23 @@ function AdminNotificationsPage(){
         .catch((error) => console.log(error));
   };
 
+  
+  const deletionHandler = (notificationIdentifier) => {
+    axios({
+      method: "post",
+      url: `/api/deletenotification/${notificationIdentifier}`,
+      data: {
+          "notification_id": notificationIdentifier
+      },
+      headers: {"Content-Type": "application/json"}
+    })
+      .then(() => {
+        getData();
+      })
+        .catch((error) => console.log(error));
+  };
+
+  
   return (
     <Fragment>
       <form method="POST" onSubmit={ submissionHandler }>
@@ -51,13 +68,15 @@ function AdminNotificationsPage(){
         <tr>
           <th>Content</th>
           <th>Time</th>
+          <th></th>
         </tr>
 
-        { notifications.map((notificaction) => {
+        { notifications.map((notification) => {
           return (
-            <tr key={ notificaction["user_id"] }>
-              <td>{ notificaction["notification_content"] }</td>
-              <td>{ notificaction["notification_created_at"] }</td>
+            <tr key={ notification["notification_id"] }>
+              <td>{ notification["notification_content"] }</td>
+              <td>{ notification["notification_created_at"] }</td>
+              <td><button onClick={deletionHandler.bind(null, notification["notification_id"])}>Delete Notification</button></td>
             </tr>
           )
         }) }

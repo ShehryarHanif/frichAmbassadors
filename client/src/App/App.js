@@ -4,6 +4,7 @@ import "./App.css";
 
 import HomePage from "./Pages/OtherPages/HomePage/HomePage.js";
 import AmbassadorUsersPage from "./Pages/Ambassador/AmbassadorUsersPage/AmbassadorUsersPage";
+import AmbassadorNotificationsPage from "./Pages/Ambassador/AmbassadorNotificationsPage/AmbassadorNotificationsPage";
 import ApplicationPage from "./Pages/OtherPages/ApplicationPage/ApplicationPage";
 import AdminApplicantsPage from "./Pages/Admin/AdminApplicantsPage/AdminApplicantsPage";
 import AdminApplicantPage from "./Pages/Admin/AdminApplicantPage/AdminApplicantPage";
@@ -18,7 +19,7 @@ const App = () => {
         {/* <Route exact path="/authentication" component={ AuthenticationPage }/> */}
         {/* <Route exact path="/ambassador" component={ AmbassadorsPage }/> */}
         <Route exact path="/ambassador/users" component={ AmbassadorUsersPage }/>
-        {/* <Route exact path="/ambassador/notifications" component={ AmbassadorNotificationsPage }/> */}
+        <Route exact path="/ambassador/notifications" component={ AmbassadorNotificationsPage }/>
         {/* <Route exact path="/admin/authentication" component={ AdminAuthenticationPage }/> */}
         {/* <Route exact path="/admin/main" component={ AdminMainPage }/> */}
         {/* <Route exact path="/admin/ambassadors" component={ AdminAmbassadorsPage }/> */}

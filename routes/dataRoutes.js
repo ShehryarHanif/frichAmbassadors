@@ -60,6 +60,19 @@ router.get("/users", (req, res) => {
     });
 });
 
+router.get("/notifications", (req, res) => {
+    const queryString = "SELECT * FROM notifications ORDER BY notification_created_at DESC;";
+
+    connection.query(queryString, function(err, results){
+        if (err){
+            console.log("Search Error");
+        } else{            
+            res.json(results);
+        }
+    });
+});
+
+
 router.get("/ambassadors/:ambassadorIdentifier", (req, res) => {
     const queryString = "SELECT * FROM users WHERE user_ambassador_id = ? ORDER BY user_created_at DESC;";
 
@@ -172,22 +185,36 @@ router.post("/newuser", (req, res) => {
     });
 });
 
-router.post("/newapplicant", (req, res) => {
-    const insertQuery = `INSERT INTO applicants SET ?;`;
+router.post("/newuser", (req, res) => {
+    const insertQuery = `INSERT INTO users SET ?;`;
     
     const values = {
-        "applicant_first_name": req.body.applicant_first_name,
-        "applicant_last_name": req.body.applicant_last_name,
-        "applicant_email": req.body.applicant_email,
-        "applicant_instagram": req.body.applicant_instagram,
-        "applicant_tiktok": req.body.applicant_tiktok,
-        "applicant_referral_code": req.body.applicant_referral_code,
-        "applicant_question_one": req.body.applicant_question_one,
-        "applicant_question_two": req.body.applicant_question_two,
-        "applicant_registration_status": "pending"
+        "user_name": req.body.user_name,
+        "user_email": req.body.user_email,
+        "user_registration_status": req.body.user_registration_status,
+        "user_ambassador_id": req.body.user_ambassador_id,
+        "user_referral_code": req.body.user_referral_code
     };
 
     connection.query(insertQuery, values, function(err, results){
+        if (err){
+            console.log("Insertion Error");
+
+            console.log(err);
+        } else{            
+            res.json(results);
+        }
+    });
+});
+
+router.post("/newnotification", (req, res) => {
+    const insertQuery = `INSERT INTO notifications SET ?;`;
+    
+    const value = {
+        "notification_content": req.body.new_notification_content
+    };
+
+    connection.query(insertQuery, value, function(err, results){
         if (err){
             console.log("Insertion Error");
 

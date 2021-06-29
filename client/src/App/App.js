@@ -7,6 +7,7 @@ import AmbassadorUsersPage from "./Pages/Ambassador/AmbassadorUsersPage/Ambassad
 import ApplicationPage from "./Pages/OtherPages/ApplicationPage/ApplicationPage";
 import AdminApplicantsPage from "./Pages/Admin/AdminApplicantsPage/AdminApplicantsPage";
 import AdminApplicantPage from "./Pages/Admin/AdminApplicantPage/AdminApplicantPage";
+import AdminNotificationsPage from "./Pages/Admin/AdminNotificationsPage/AdminNotificationsPage";
 
 const App = () => {
   return (
@@ -24,7 +25,7 @@ const App = () => {
         {/* <Route exact path="/admin/ambassadors/:identifier" component={ AdminAmbassadorPage }/> */}
         <Route exact path="/admin/applicants" component={ AdminApplicantsPage }/>
         <Route exact path="/admin/applicants/:identifier" component={ AdminApplicantPage }/>
-        {/* <Route exact path="/admin/notifications/" component={ AdminNotificationsPage }/> */}
+        <Route exact path="/admin/notifications/" component={ AdminNotificationsPage }/>
       </Switch>
     </Router>
   );

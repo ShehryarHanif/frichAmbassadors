@@ -40,6 +40,18 @@ const HomePage = () => {
             Admin's Notifications Page
         </button>
       </Link>
+
+      <Link to={"./admin/ambassadors/"}>
+        <button variant="raised">
+            Admin's Ambassadors Page
+        </button>
+      </Link>
+
+      <Link to={"./admin/ambassadors/1"}>
+        <button variant="raised">
+            Admin's Generic Ambassador Page
+        </button>
+      </Link>
     </div>
   );
 };

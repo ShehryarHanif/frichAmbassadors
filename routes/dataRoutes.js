@@ -72,6 +72,19 @@ router.get("/notifications", (req, res) => {
     });
 });
 
+router.get("/ambassadorsinfo", (req, res) => {
+    const queryString = "SELECT ambassador_id, ambassador_first_name, ambassador_last_name, ambassador_email, ambassador_referral_code, COUNT(users.user_id) AS number_of_users FROM ambassadors LEFT JOIN users ON ambassadors.ambassador_id = users.user_ambassador_id GROUP BY ambassadors.ambassador_id ORDER BY ambassadors.ambassador_created_at DESC;";
+
+    connection.query(queryString, function(err, results){
+        if (err){
+            console.log("Search Error");
+
+            console.log(err);
+        } else{            
+            res.json(results);
+        }
+    });
+});
 
 router.get("/ambassadors/:ambassadorIdentifier", (req, res) => {
     const queryString = "SELECT * FROM users WHERE user_ambassador_id = ? ORDER BY user_created_at DESC;";
@@ -177,8 +190,6 @@ router.post("/newuser", (req, res) => {
     connection.query(insertQuery, values, function(err, results){
         if (err){
             console.log("Insertion Error");
-
-            console.log(err);
         } else{            
             res.json(results);
         }

@@ -76,7 +76,7 @@ function ApplicationPage(props){
       headers: {"Content-Type": "application/json"}
     })
       .then(() => {
-        props.history.push("../");
+        props.history.push("/");
       })
         .catch((error) => console.log(error));
   };

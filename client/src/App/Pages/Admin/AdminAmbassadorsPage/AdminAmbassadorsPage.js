@@ -27,6 +27,7 @@ function AdminAmbassadorsPage(props){
                 <th>Email</th>
                 <th>Referral Code</th>
                 <th>Number of Users</th>
+                <th>Tier</th>
                 <th></th>
                 </tr>
 
@@ -38,6 +39,7 @@ function AdminAmbassadorsPage(props){
                     <td>{ ambassador["ambassador_email"] }</td>
                     <td>{ ambassador["ambassador_referral_code"] }</td>
                     <td>{ ambassador["number_of_users"] }</td>
+                    <td>{ambassador["ambassador_tier"]}</td>
                     <td><button onClick={submissionHandler.bind(null, ambassador["ambassador_id"])} >View</button></td>
                     </tr>
                 )

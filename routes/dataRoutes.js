@@ -86,12 +86,28 @@ router.get("/ambassadorsinfo", (req, res) => {
     });
 });
 
+router.get("/ambassadorsinfo/:ambassadorIdentifier", (req, res) => {
+    const queryString = "SELECT * FROM ambassadors WHERE ambassador_id = ?;";
+
+    connection.query(queryString, req.params.ambassadorIdentifier, function(err, results){
+        if (err){
+            console.log("Search Error");
+
+            console.log(err);
+        } else{            
+            res.json(results[0]);
+        }
+    });
+});
+
 router.get("/ambassadors/:ambassadorIdentifier", (req, res) => {
     const queryString = "SELECT * FROM users WHERE user_ambassador_id = ? ORDER BY user_created_at DESC;";
 
     connection.query(queryString, req.params.ambassadorIdentifier, function(err, results){
         if (err){
             console.log("Search Error");
+
+            console.log(err);
         } else{            
             res.json(results);
         }
@@ -124,8 +140,6 @@ router.get("/aggregateddatabase/:ambassadorIdentifier", (req, res) => {
 
 router.post("/applicants/status/:identifier", (req, res) => {
     const queryString = "UPDATE applicants SET applicant_registration_status = ? WHERE applicant_id = ?";
-
-    console.log("here");
 
     connection.query(queryString, [req.body.status_update, req.body.applicant_id], function(err, results){
         if (err){
@@ -255,43 +269,30 @@ router.post("/deletenotification/:notificationidentifier", (req, res) => {
 });
 
 
-// router.post("/ambassador", (req, res) => {
-//     const selectionQuery = `SELECT * from applicants WHERE applicant_id = ${req.body.applicant_id}`;
+router.post("/newapplicant", (req, res) => {
+    const insertQuery = `INSERT INTO applicants SET ?;`;
 
-//     connection.query(selectionQuery, function(err, results){
-//         if (err){
-//             console.log("Selection Error");
+    const values = {
+        "applicant_first_name": req.body.applicant_first_name,
+        "applicant_last_name": req.body.applicant_last_name,
+        "applicant_email": req.body.applicant_email,
+        "applicant_instagram": req.body.applicant_instagram,
+        "applicant_tiktok": req.body.applicant_tiktok,
+        "applicant_referral_code": req.body.applicant_referral_code,
+        "applicant_question_one": req.body.applicant_question_one,
+        "applicant_question_two": req.body.applicant_question_two,
+        "applicant_registration_status": "pending"
+    };
 
-//             console.log(err);
-//         } else{
-//             const insertionQuery = "INSERT INTO ambassadors SET ?;";
-            
-//             const returnedApplicant = results[0];
+    connection.query(insertQuery, values, function(err, results){
+        if (err){
+            console.log("Insertion Error");
 
-//             const requiredValues = {
-//                 "ambassador_first_name": returnedApplicant["applicant_first_name"],
-//                 "ambassador_last_name": returnedApplicant["applicant_last_name"],
-//                 "ambassador_email": returnedApplicant["applicant_email"],
-//                 "ambassador_instagram": returnedApplicant["applicant_instagram"],
-//                 "ambassador_tiktok": returnedApplicant["applicant_tiktok"],
-//                 "ambassador_referral_code": returnedApplicant["applicant_referral_code"],
-//                 "ambassador_question_one": returnedApplicant["application_question_one"],
-//                 "ambassador_question_two": returnedApplicant["applicant_question_two"]
-//             };
-            
-//             connection.query(insertionQuery, requiredValues, function(error, newResults){
-//                 if (error){
-//                     console.log("Insertion Error");
-
-//                     console.log(error);
-//                 } else{
-//                     const applicantIdentifier = results[0]["applicant_id"];
-
-                    
-//                 }
-//             });
-//         }
-//     });
-// });
+            console.log(err);
+        } else{            
+            res.json(results);
+        }
+    });
+});
 
 module.exports = router;

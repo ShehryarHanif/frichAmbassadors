@@ -32,18 +32,18 @@ function AmbassadorUsersPage(){
       "user_name": newUserName,
       "user_email": newUserEmail,
       "user_registration_status": "pending",
-      "user_ambassador_id": ambassador["ambassador_id"] || 1,
+      "user_ambassador_id": ambassador["ambassador_id"] || "1",
       "user_referral_code": ambassador["referral_code"] || "applicantCodeOne"
     }
 
     axios({
       method: "post",
-      url: "api/newuser",
+      url: "/api/newuser",
       data: formData,
       headers: {"Content-Type": "application/json"}
     })
-      .then(() => {
-        getData();
+      .then(async () => {
+        await getData();
 
         setNewUserName("");
         setNewUserEmail("");
@@ -62,6 +62,8 @@ function AmbassadorUsersPage(){
 
         <button type="submit">Add User</button>
       </form>
+
+      <p>Referral Code: {ambassador["ambassador_referral_code"] || "applicantCodeOne"}</p>
 
       <table>
         <tr>

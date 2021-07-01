@@ -100,6 +100,34 @@ router.get("/ambassadorsinfo/:ambassadorIdentifier", (req, res) => {
     });
 });
 
+router.get("/ambassadorsinfo/:ambassadorIdentifier/number", (req, res) => {
+    const queryString = "SELECT COUNT(users.user_id) AS number_of_users FROM users WHERE users.user_ambassador_id = ?";
+
+    connection.query(queryString, req.params.ambassadorIdentifier, function(err, results){
+        if (err){
+            console.log("Search Error");
+
+            console.log(err);
+        } else{            
+            res.json(results[0]);
+        }
+    });
+});
+
+router.get("/ambassadorsinfo/:ambassadorIdentifier/verificationnumber", (req, res) => {
+    const queryString = "SELECT COUNT(users.user_id) AS verified_number_of_users FROM users WHERE users.user_ambassador_id = ? AND users.user_verification_status = 'accepted'";
+
+    connection.query(queryString, req.params.ambassadorIdentifier, function(err, results){
+        if (err){
+            console.log("Search Error");
+
+            console.log(err);
+        } else{                     
+            res.json(results[0]);
+        }
+    });
+});
+
 router.get("/ambassadors/:ambassadorIdentifier", (req, res) => {
     const queryString = "SELECT * FROM users WHERE user_ambassador_id = ? ORDER BY user_created_at DESC;";
 
@@ -108,6 +136,18 @@ router.get("/ambassadors/:ambassadorIdentifier", (req, res) => {
             console.log("Search Error");
 
             console.log(err);
+        } else{            
+            res.json(results);
+        }
+    });
+});
+
+router.post("/users/status/:identifier", (req, res) => {
+    const queryString = "UPDATE users SET user_verification_status = ? WHERE user_id = ?";
+
+    connection.query(queryString, [req.body.status_update, req.body.user_id], function(err, results){
+        if (err){
+            console.log("Search Error");
         } else{            
             res.json(results);
         }
@@ -198,7 +238,8 @@ router.post("/newuser", (req, res) => {
         "user_email": req.body.user_email,
         "user_registration_status": req.body.user_registration_status,
         "user_ambassador_id": req.body.user_ambassador_id,
-        "user_referral_code": req.body.user_referral_code
+        "user_referral_code": req.body.user_referral_code,
+        "user_verification_status": req.body.user_verification_status
     };
 
     connection.query(insertQuery, values, function(err, results){

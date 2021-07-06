@@ -16,13 +16,13 @@ function AmbassadorUsersPage(){
 
   
   const getNumber = () => {
-    axios.get(`/api/ambassadorsinfo/${ambassador["ambassador_id"] || "1"}/number`)
+    axios.get(`/api/ambassadors-info/${ambassador["ambassador_id"] || "1"}/number`)
       .then((response) => {setNumberOfUsers(response.data["number_of_users"])})
         .catch((err) => console.log(err));
   };
   
   const getVerifiedNumber = () => {
-    axios.get(`/api/ambassadorsinfo/${ambassador["ambassador_id"] || "1"}/verificationnumber`)
+    axios.get(`/api/ambassadors-info/${ambassador["ambassador_id"] || "1"}/verification-number`)
       .then((response) => {setVerifiedNumberOfUsers(response.data["verified_number_of_users"])})
         .catch((err) => console.log(err));
   };
@@ -48,7 +48,6 @@ function AmbassadorUsersPage(){
     const formData = {
       "user_name": newUserName,
       "user_email": newUserEmail,
-      "user_registration_status": "pending",
       "user_ambassador_id": ambassador["ambassador_id"] || "1",
       "user_referral_code": ambassador["referral_code"] || "applicantCodeOne",
       "user_verification_status": "unverified"
@@ -56,14 +55,14 @@ function AmbassadorUsersPage(){
 
     axios({
       method: "post",
-      url: "/api/newuser",
+      url: "/api/users/new-user",
       data: formData,
       headers: {"Content-Type": "application/json"}
     })
       .then(async () => {
         await getData();
-        await getNumber;
-        await getVerifiedNumber;
+        await getNumber();
+        await getVerifiedNumber();
 
         setNewUserName("");
         setNewUserEmail("");

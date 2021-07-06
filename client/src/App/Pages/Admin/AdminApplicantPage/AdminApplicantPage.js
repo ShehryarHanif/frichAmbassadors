@@ -49,7 +49,7 @@ function AdminApplicantPage(props){
     if(applicant["registration_status"] !== "accepted"){
       axios({
         method: "post",
-        url: `/api/applicants/ambassadorcreator/${applicant["applicant_id"]}`,
+        url: `/api/applicants/ambassador-creator/${applicant["applicant_id"]}`,
         data: applicant,
         headers: {"Content-Type": "application/json"}
       })

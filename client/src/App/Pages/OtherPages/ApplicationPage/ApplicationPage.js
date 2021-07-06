@@ -71,7 +71,7 @@ function ApplicationPage(props){
 
     axios({
       method: "post",
-      url: "api/newapplicant",
+      url: "api/new-applicant",
       data: formData,
       headers: {"Content-Type": "application/json"}
     })

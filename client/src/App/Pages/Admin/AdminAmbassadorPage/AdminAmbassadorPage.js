@@ -9,7 +9,7 @@ function AdminAmbassadorPage(props){
   const [verifiedNumberOfUsers, setVerifiedNumberOfUsers] = useState(null);
 
   const getAmbassador = () => {
-    axios.get(`/api/ambassadorsinfo/${props.match.params.identifier}`)
+    axios.get(`/api/ambassadors-info/${props.match.params.identifier}`)
       .then((response) => {
         setAmbassador(response.data)
       } )
@@ -23,13 +23,13 @@ function AdminAmbassadorPage(props){
   };
   
   const getNumber = () => {
-    axios.get(`/api/ambassadorsinfo/${ambassador["ambassador_id"] || "1"}/number`)
+    axios.get(`/api/ambassadors-info/${ambassador["ambassador_id"] || "1"}/number`)
       .then((response) => {setNumberOfUsers(response.data["number_of_users"])})
         .catch((err) => console.log(err));
   };
   
   const getVerifiedNumber = () => {
-    axios.get(`/api/ambassadorsinfo/${ambassador["ambassador_id"] || "1"}/verificationnumber`)
+    axios.get(`/api/ambassadors-info/${ambassador["ambassador_id"] || "1"}/verification-number`)
       .then((response) => {setVerifiedNumberOfUsers(response.data["verified_number_of_users"])})
         .catch((err) => console.log(err));
   };

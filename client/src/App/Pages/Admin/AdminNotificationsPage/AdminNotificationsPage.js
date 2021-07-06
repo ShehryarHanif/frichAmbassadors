@@ -24,7 +24,7 @@ function AdminNotificationsPage(){
 
     axios({
       method: "post",
-      url: "/api/newnotification",
+      url: "/api/new-notification",
       data: {
           "new_notification_content": newNotificationContent
       },
@@ -42,7 +42,7 @@ function AdminNotificationsPage(){
   const deletionHandler = (notificationIdentifier) => {
     axios({
       method: "post",
-      url: `/api/deletenotification/${notificationIdentifier}`,
+      url: `/api/delete-notification/${notificationIdentifier}`,
       data: {
           "notification_id": notificationIdentifier
       },

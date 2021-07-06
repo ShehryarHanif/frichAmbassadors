@@ -1,5 +1,7 @@
 require("dotenv").config();
 
+const dataRoutes = require("./routes/dataRoutes.js");
+
 const express = require("express");
 const path = require("path");
 const morgan = require("morgan");
@@ -9,6 +11,10 @@ const cors = require("cors");
 const app = express();
 
 app.use(morgan("combined"));
+
+app.use(express.urlencoded({extended : false}));
+
+app.use(express.static(path.join(__dirname, "client/build")));
 
 // app.use(helmet());
 
@@ -26,24 +32,10 @@ app.use(morgan("combined"));
 
 // app.use(cors(corsOptions));
 
-app.use(express.urlencoded({extended : false}));
-
-app.use(express.static(path.join(__dirname, "client/build")));
-
-const dataRoutes = require("./routes/dataRoutes.js");
-
 app.use("/api", dataRoutes);
 
-// app.get('/api/getList', (req,res) => {
-//     const list = ["item1", "item2", "item3"];
-
-//     res.json(list);
-
-//     console.log('Sent list of items');
-// });
-
 app.get("*", function(req,res){
-    res.sendFile(path.join(__dirname+"/client/build/index.html"));
+    res.sendFile(path.join(__dirname + "/client/build/index.html"));
 });
 
 app.listen(process.env.PORT || 3000, function () {

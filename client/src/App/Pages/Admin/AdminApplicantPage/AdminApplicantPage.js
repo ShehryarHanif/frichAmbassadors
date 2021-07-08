@@ -8,7 +8,7 @@ function AdminApplicantPage(props){
   const [tentativeAcceptance, setTentativeAcceptance] = useState(false);
 
   const acceptedMessageCreator = (firstName) => {
-    return `Welcome, ${firstName}!%0D%0A%0D%0AWe wanted to thank you for giving us the chance to get to know you a little better. We are excited to grow Frich together with you and spread the Frich love! %0D%0A%0D%0ABefore we get started, find some initial information on what you can expect from us and what we will expect from you below: %0D%0AWe have put together a Welcome Package for you that outlines the program expectations and an overview of the Frich team.%0D%0AWe will primarily use Slack for communication and Google Drive for keeping track of user acquisitions and events. You can expect invites to these platforms shortly. Let me know if you’ve never used these platforms before and need help setting up.%0D%0A%0D%0AEach of you should have an account created on our Ambassador Platform to keep track of your onboarded users.%0D%0A%0D%0AMake sure to download the app.%0D%0A%0D%0AFollow us on Instagram (https://www.instagram.com/frichmoney/) and TikTok (https://www.tiktok.com/@frichapp)%0D%0ASign the attached ambassador agreement by the end of the week. You won’t be able to begin the program without these. %0D%0A%0D%0AI also wanted to take the time to introduce myself - my name is Emily von Linde and I will be your primary contact person throughout this ambassador journey. I have put this program together for you and I am excited to hear your honest feedback on it as we progress through this together!`;
+    return `Welcome, ${firstName}!%0D%0A%0D%0AWe wanted to thank you for giving us the chance to get to know you a little better. We are excited to grow Frich together with you and spread the Frich love! %0D%0A%0D%0ABefore we get started, find some initial information on what you can expect from us and what we will expect from you below: %0D%0AWe have put together a Welcome Package for you that outlines the program expectations and an overview of the Frich team.%0D%0AWe will primarily use Slack for communication and Google Drive for keeping track of user acquisitions and events. You can expect invites to these platforms shortly. Let me know if you’ve never used these platforms before and need help setting up.%0D%0AEach of you should have an account created on our Ambassador Platform to keep track of your onboarded users.%0D%0AMake sure to download the app.%0D%0AFollow us on Instagram (https://www.instagram.com/frichmoney/) and TikTok (https://www.tiktok.com/@frichapp)%0D%0ASign the attached ambassador agreement by the end of the week. You won’t be able to begin the program without these. %0D%0A%0D%0AMy name is Emily von Linde and I will be your primary contact person throughout this ambassador journey. I have put this program together for you and I am excited to hear your honest feedback on it as we progress through this together!`;
   };
 
   const pendingMessageCreator = (firstName) => {
@@ -55,7 +55,7 @@ function AdminApplicantPage(props){
   };
 
   const acceptanceEmailSender = () => {
-    window.open(`mailto:${applicant["applicant_email"]}?subject=Welcome%20To%20Frich%20Ambassador%20&body=${acceptedMessageCreator(applicant["applicant_first_name"])}`);
+    window.open(`mailto:${applicant["applicant_email"]}?subject=Welcome%20To%20Frich%20Ambassadors%20&body=${acceptedMessageCreator(applicant["applicant_first_name"])}`);
     statusChanger("accepted");
   }
 

@@ -260,7 +260,7 @@ router.get("/ambassadors-info/:ambassadorIdentifier/verification-number", (req, 
     });
 });
 
-router.post("/applicants/ambassador-creator/:identifier", (req, res) => {
+router.post("/applicants/ambassador-creator/", (req, res) => {
     const insertQuery = `INSERT INTO ambassadors SET ?;`;
 
     const setPassword = null;
@@ -269,8 +269,8 @@ router.post("/applicants/ambassador-creator/:identifier", (req, res) => {
         "ambassador_first_name": req.body.applicant_first_name,
         "ambassador_last_name": req.body.applicant_last_name,
         "ambassador_email": req.body.applicant_email,
-        "ambassador_instagram": `${req.body.applicant_instagram}`,
-        "ambassador_tiktok": `${req.body.applicant_tiktok}`,
+        "ambassador_instagram": req.body.applicant_instagram,
+        "ambassador_tiktok": req.body.applicant_tiktok,
         "ambassador_referral_code": req.body.applicant_referral_code,
         "ambassador_password": setPassword || "genericPassword",
         "ambassador_tier": "bronze",

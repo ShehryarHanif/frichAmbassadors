@@ -28,6 +28,7 @@ const App = () => {
       <Route exact path="/admin/ambassadors" component={ AdminAmbassadorsPage }/>
       <Route exact path="/admin/ambassadors/:identifier" component={ AdminAmbassadorPage }/>
       <Route exact path="/admin/notifications/" component={ AdminNotificationsPage }/>
+      <Route path="*" component={ HomePage }/>
     </Switch>
   );
 };

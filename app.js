@@ -18,18 +18,11 @@ app.use(express.static(path.join(__dirname, "client/build")));
 
 app.use(helmet());
 
-const whitelist = ["/"];
-
 const corsOptions = {
-  origin: function (origin, callback){
-    if (whitelist.indexOf(origin) !== -1){
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  }
+    origin: 'https://frich-ambassadors.herokuapp.com',
+    credentials: true
 };
-
+  
 app.use(cors(corsOptions));
 
 // app.options('*', cors());

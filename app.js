@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, "client/build")));
 
 app.use(helmet());
 
-const whitelist = ["https://frich-ambassadors.herokuapp.com/"]
+const whitelist = ["https://frich-ambassadors.herokuapp.com/", "http://frich-ambassadors.herokuapp.com/"];
 
 const corsOptions = {
   origin: function (origin, callback){

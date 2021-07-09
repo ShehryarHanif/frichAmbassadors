@@ -19,13 +19,11 @@ app.use(express.static(path.join(__dirname, "client/build")));
 app.use(helmet());
 
 const corsOptions = {
-    origin: 'https://frich-ambassadors.herokuapp.com',
+    origin: "https://frich-ambassadors.herokuapp.com",
     credentials: true
 };
   
 app.use(cors(corsOptions));
-
-// app.options('*', cors());
 
 app.use("/api", dataRoutes);
 

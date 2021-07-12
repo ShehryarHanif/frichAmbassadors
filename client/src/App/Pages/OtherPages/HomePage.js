@@ -11,6 +11,12 @@ const HomePage = () => {
         </button>
       </Link>
 
+      <Link to={"./authentication"}>
+        <button variant="raised">
+            Ambassador's Authentication Page
+        </button>
+      </Link>
+
       <Link to={"./ambassador/users"}>
         <button variant="raised">
             Ambassador's Users Page
@@ -20,6 +26,12 @@ const HomePage = () => {
       <Link to={"./ambassador/notifications"}>
         <button variant="raised">
             Ambassador's Notifications Page
+        </button>
+      </Link>
+
+      <Link to={"./admin/authentication"}>
+        <button variant="raised">
+            Admin's Authentication Page
         </button>
       </Link>
 
@@ -52,6 +64,7 @@ const HomePage = () => {
             Admin's Generic Ambassador Page
         </button>
       </Link>
+
     </div>
   );
 };

@@ -1,5 +1,6 @@
 const express = require('express');
 const mysql = require("mysql");
+const bcrypt = require("bcryptjs");
 
 const connectionRequirements = {
     host : process.env.RDS_HOSTNAME,
@@ -263,29 +264,41 @@ router.get("/ambassadors-info/:ambassadorIdentifier/verification-number", (req, 
 router.post("/applicants/ambassador-creator/", (req, res) => {
     const insertQuery = `INSERT INTO ambassadors SET ?;`;
 
-    const setPassword = null;
-    
-    const values = {
-        "ambassador_first_name": req.body.applicant_first_name,
-        "ambassador_last_name": req.body.applicant_last_name,
-        "ambassador_email": req.body.applicant_email,
-        "ambassador_instagram": req.body.applicant_instagram,
-        "ambassador_tiktok": req.body.applicant_tiktok,
-        "ambassador_referral_code": req.body.applicant_referral_code,
-        "ambassador_password": setPassword || "genericPassword",
-        "ambassador_tier": "bronze",
-        "ambassador_applicant_id": req.body.applicant_id
-    };
+    const setPassword = req.body.applicant_first_name.substring(0, 3) + req.body.applicant_last_name.substring(0, 3) + String(Math.floor(Math.random() * 100000));
 
-    connection.query(insertQuery, values, function(err, results){
+    console.log(setPassword, req.body.applicant_first_name.substring(0, 3), req.body.applicant_last_name.substring(0, 3));
+
+    const saltRounds = 10;
+
+    bcrypt.hash(setPassword, saltRounds, function(err, hash) {
         if (err){
-            console.log("Insertion Error");
-
-            console.log(err);
-        } else{            
-            res.json(results);
+            console.log("Hashing Error");
+        } else {
+            const values = {
+                "ambassador_first_name": req.body.applicant_first_name,
+                "ambassador_last_name": req.body.applicant_last_name,
+                "ambassador_email": req.body.applicant_email,
+                "ambassador_instagram": req.body.applicant_instagram,
+                "ambassador_tiktok": req.body.applicant_tiktok,
+                "ambassador_referral_code": req.body.applicant_referral_code,
+                "ambassador_password": hash || "genericPassword",
+                "ambassador_tier": "bronze",
+                "ambassador_applicant_id": req.body.applicant_id
+            };
+        
+            connection.query(insertQuery, values, function(err){
+                if (err){
+                    console.log("Insertion Error");
+        
+                    console.log(err);
+                } else{            
+                    res.json({"setPassword" : setPassword});
+                }
+            });  
         }
-    });  
+
+    }); 
+
 });
 
 module.exports = router;

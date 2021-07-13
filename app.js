@@ -22,12 +22,12 @@ app.use(morgan("combined"));
 
 app.use(helmet());
 
-// const corsOptions = {
-//     origin: "https://frich-ambassadors.herokuapp.com",
-//     credentials: true
-// };
+const corsOptions = {
+    origin: "https://frich-ambassadors.herokuapp.com",
+    credentials: true
+};
   
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 app.use("/api", dataRoutes);
 app.use("/authentication", authenticationRoutes);

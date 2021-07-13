@@ -8,29 +8,41 @@ function AmbassadorUsersPage(){
   const [numberOfUsers, setNumberOfUsers] = useState(null);
   const [verifiedNumberOfUsers, setVerifiedNumberOfUsers] = useState(null);
 
+  const getAmbassador = () => {
+    axios.get(`/api/ambassadors/ambassador-info`)
+      .then((response) => setAmbassador(response.data))
+        .catch((err) => console.log(err));
+  };
+
   const getData = () => {
-    axios.get(`/api/ambassadors/${ambassador["ambassador_id"] || "1"}`)
+    axios.get(`/api/ambassadors/users-info`)
       .then((response) => setUsers(response.data))
         .catch((err) => console.log(err));
   };
 
-  
   const getNumber = () => {
-    axios.get(`/api/ambassadors-info/${ambassador["ambassador_id"] || "1"}/number`)
+    axios.get(`/api/ambassadors-info/number`)
       .then((response) => {setNumberOfUsers(response.data["number_of_users"])})
         .catch((err) => console.log(err));
   };
   
   const getVerifiedNumber = () => {
-    axios.get(`/api/ambassadors-info/${ambassador["ambassador_id"] || "1"}/verification-number`)
+    axios.get(`/api/ambassadors-info/verification-number`)
       .then((response) => {setVerifiedNumberOfUsers(response.data["verified_number_of_users"])})
         .catch((err) => console.log(err));
   };
 
-  useEffect(getData, []);
-  useEffect(getNumber, []);
-  useEffect(getVerifiedNumber, []);
-  
+  useEffect(() => {
+    const getInformation = async () => {
+      await getAmbassador();
+      await getData();
+      await getNumber();
+      await getVerifiedNumber();
+    }
+
+    getInformation();
+  }, []);
+
   const [newUserName, setNewUserName] = useState("");
   const [newUserEmail, setNewUserEmail] = useState("");
 
@@ -45,12 +57,14 @@ function AmbassadorUsersPage(){
   const submissionHandler = (event) => {
     event.preventDefault();
 
+    console.log(ambassador);
+
     const formData = {
       "user_name": newUserName,
       "user_email": newUserEmail,
-      "user_ambassador_id": ambassador["ambassador_id"] || "1",
-      "user_referral_code": ambassador["referral_code"] || "applicantCodeOne",
-      "user_verification_status": "unverified"
+      "user_ambassador_id": ambassador["ambassador_id"],
+      "user_referral_code": ambassador["ambassador_referral_code"],
+      "user_verification_status": "unverified",
     }
 
     axios({
@@ -63,6 +77,8 @@ function AmbassadorUsersPage(){
         await getData();
         await getNumber();
         await getVerifiedNumber();
+
+        console.log(users, numberOfUsers, verifiedNumberOfUsers);
 
         setNewUserName("");
         setNewUserEmail("");
@@ -82,7 +98,7 @@ function AmbassadorUsersPage(){
         <button type="submit">Add User</button>
       </form>
 
-      <p>Referral Code: {ambassador["ambassador_referral_code"] || "applicantCodeOne"}</p>
+      <p>Referral Code: {ambassador["ambassador_referral_code"]}</p>
       <p>Number of Users: {numberOfUsers}</p>
       <p>Number of Verified Users: {verifiedNumberOfUsers}</p>
 

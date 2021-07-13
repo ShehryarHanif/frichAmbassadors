@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+import LogOutButton from "../../Components/Buttons/LogOutButton";
+
 const HomePage = () => {
   return (
     <div className="App">
@@ -65,6 +67,7 @@ const HomePage = () => {
         </button>
       </Link>
 
+      <LogOutButton />
     </div>
   );
 };

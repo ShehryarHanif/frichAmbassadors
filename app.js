@@ -18,9 +18,9 @@ app.use(express.static(path.join(__dirname, "client/build")));
 
 app.use(cookieParser());
 
-app.use(morgan("combined"));
+// app.use(morgan("combined"));
 
-app.use(helmet());
+// app.use(helmet());
 
 // const corsOptions = {
 //     origin: "https://frich-ambassadors.herokuapp.com",

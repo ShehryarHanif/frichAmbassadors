@@ -17,27 +17,33 @@ function AdminAmbassadorPage(props){
   };
 
   const getUsers = () => {
-    axios.get(`/api/ambassadors/${ambassador["ambassador_id"] || "1"}`)
+    axios.get(`/api/ambassadors/${ambassador["ambassador_id"]}`)
       .then((response) => {setUsers(response.data)})
         .catch((err) => console.log(err));
   };
   
   const getNumber = () => {
-    axios.get(`/api/ambassadors-info/${ambassador["ambassador_id"] || "1"}/number`)
+    axios.get(`/api/ambassadors-info/${ambassador["ambassador_id"] }/number`)
       .then((response) => {setNumberOfUsers(response.data["number_of_users"])})
         .catch((err) => console.log(err));
   };
   
   const getVerifiedNumber = () => {
-    axios.get(`/api/ambassadors-info/${ambassador["ambassador_id"] || "1"}/verification-number`)
+    axios.get(`/api/ambassadors-info/${ambassador["ambassador_id"]}/verification-number`)
       .then((response) => {setVerifiedNumberOfUsers(response.data["verified_number_of_users"])})
         .catch((err) => console.log(err));
   };
 
-  useEffect(getAmbassador, []);
-  useEffect(getUsers, []);
-  useEffect(getNumber, []);
-  useEffect(getVerifiedNumber, []);
+  useEffect(() => {
+    const getInformation = async () => {
+      await getAmbassador();
+      await getUsers();
+      await getNumber();
+      await getVerifiedNumber();
+    }
+
+    getInformation();
+  }, [ambassador]);
 
   const submissionHandler = (passedElement) => {
     props.history.push(`/admin/applicants/${passedElement}`);
@@ -46,7 +52,7 @@ function AdminAmbassadorPage(props){
  const statusChanger = (userId, newStatus) => {
   axios({
     method: "post",
-    url: `/api/users/status/${userId}`,
+    url: `/api/users/status`,
     data: {
       "status_update": newStatus,
       "user_id": userId

@@ -6,7 +6,7 @@ function AmbassadorNotificationsPage(){
   const [notifications, setNotifications] = useState([]);
 
   const getData = () => {
-    axios.get("/api/notifications")
+    axios.get("/api/ambassador-notifications")
       .then((response) => setNotifications(response.data))
         .catch((err) => console.log(err));
   };

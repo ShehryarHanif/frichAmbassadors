@@ -1,7 +1,9 @@
-const express = require('express');
+const express = require("express");
 const mysql = require("mysql");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+
+const authenticationMiddleware = require("../middleware/authenticationMiddleware");
 
 const connectionRequirements = {
     host : process.env.RDS_HOSTNAME,
@@ -23,7 +25,7 @@ connection.connect(function(error){
 
 const createToken = (id) => {
   return jwt.sign({ id }, process.env.SECRET_KEY, {
-    expiresIn:  process.env.MAX_AGE
+    expiresIn:  String(process.env.MAX_AGE)
   });
 };
 
@@ -32,7 +34,10 @@ const router = express.Router({mergeParams: true});
 router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
 
-router.post("/ambassador/", (req, res) => {
+const ambassadorAuthentication = authenticationMiddleware.ambassadorAuthentication;
+const adminAuthentication = authenticationMiddleware.adminAuthentication;
+
+router.post("/ambassador", (req, res) => {
     const searchQuery = `SELECT * FROM ambassadors WHERE ambassador_email = ?;`;
 
     connection.query(searchQuery, req.body.ambassador_email, function(err, results){
@@ -41,13 +46,13 @@ router.post("/ambassador/", (req, res) => {
 
             console.log(err);
         } else{            
-            bcrypt.compare(req.body.ambassador_password, results[0]["ambassador_password"], function(err, result) {
+            bcrypt.compare(req.body.ambassador_password, results[0]["ambassador_password"], function(err) {
                 if (err){
                     console.log("Matching Error");
                 } else {
                     const token = createToken(results[0]["ambassador_id"]);
 
-                    res.cookie("jwt", token, { httpOnly: true, maxAge: process.env.MAX_AGE * 1000 });
+                    res.cookie("token", token, { httpOnly: true, secure: true });
 
                     res.json(results[0]);
                 }        
@@ -56,8 +61,36 @@ router.post("/ambassador/", (req, res) => {
     });  
 });
 
-router.post("/admin/", (req, res) => {
+router.post("/admin", (req, res) => {
+    if(req.body.admin_email === process.env.ADMIN_EMAIL && req.body.admin_password === process.env.ADMIN_PASSWORD){
+        const token = createToken(process.env.ADMIN_IDENTIFIER);
+
+        res.cookie("token", token, { httpOnly: true, secure: true });
+
+        res.json(token);
+    } else {
+        console.log("Admin Error");
+    }
 });
 
+router.get("/check-ambassador-token", ambassadorAuthentication, function(req, res) {    
+    res.sendStatus(200);
+});
 
+router.get("/check-admin-token", adminAuthentication, function(req, res) {
+    res.sendStatus(200);
+});
+
+router.get("/log-out", (req, res) => {
+    const token = req.cookies.token;
+
+    if (!token) {
+        res.status(401).send("Unauthorized: No Token Provided");
+    } else {
+        res.cookie("token", "DELETED", { MaxAge: "-1" });
+
+        res.sendStatus(200);
+    }
+});
+  
 module.exports = router;

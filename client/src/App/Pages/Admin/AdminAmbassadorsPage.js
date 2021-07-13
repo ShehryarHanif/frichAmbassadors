@@ -6,7 +6,7 @@ function AdminAmbassadorsPage(props){
   const [ambassadors, setAmbassadors] = useState([]);
 
   const getData = () => {
-    axios.get("/api/ambassadors/")
+    axios.get("/api/ambassadors-info/")
       .then((response) => setAmbassadors(response.data))
         .catch((err) => console.log(err));
   };

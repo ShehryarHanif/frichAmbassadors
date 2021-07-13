@@ -28,7 +28,7 @@ function AdminApplicantPage(props){
  const statusChanger = (newStatus) => {
     axios({
       method: "post",
-      url: `/api/applicants/status/${applicant["applicant_id"]}`,
+      url: `/api/applicants/status/`,
       data: {
         "status_update": newStatus,
         "applicant_id": applicant["applicant_id"]

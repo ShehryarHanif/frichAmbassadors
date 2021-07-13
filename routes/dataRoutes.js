@@ -188,7 +188,7 @@ router.get("/ambassador-notifications", ambassadorAuthentication, (req, res) => 
     });
 });
 
-router.get("/admin-notifications", ambassadorAuthentication, (req, res) => {
+router.get("/admin-notifications", adminAuthentication, (req, res) => {
     const queryString = "SELECT * FROM notifications ORDER BY notification_created_at DESC;";
 
     connection.query(queryString, function(err, results){

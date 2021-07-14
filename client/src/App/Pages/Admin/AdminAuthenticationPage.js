@@ -1,4 +1,4 @@
-import { useState, useRef, useContext } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import axios from "axios";
@@ -24,34 +24,6 @@ const AdminAuthenticationPage = () => {
     const enteredPassword = adminPassword;
 
     console.log(enteredEmail, enteredPassword);
-    
-    // fetch("/authentication/admin",
-    // {
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     admin_email: enteredEmail,
-    //     admin_password: enteredPassword,
-    //   }),
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   }
-    // }).then((res) => {
-    //   if(res.ok) {
-    //     return res.json();
-    //   } else {
-    //     return res.json().then((data) => {
-    //       let errorMessage = "Authentication Failed";
-
-    //       throw new Error(errorMessage);
-    //     })
-    //   }
-    // }).then((data) => {
-    //   history.replace("/");
-    // }).catch((err) => {
-    //   console.log(err);
-
-    //   alert(err.message);
-    // });
 
     const formData = {
       "admin_email": enteredEmail,

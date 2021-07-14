@@ -1,12 +1,22 @@
 import { Link } from "react-router-dom";
 
+import Layout from "../../Components/Layout/Layout";
 import LogOutButton from "../../Components/Buttons/LogOutButton";
 
 const HomePage = () => {
-  return (
-    <div className="App">
-      <h1>Frich Ambassadors</h1>
+  const requiredLink = [
+    {
+      "requiredText": "APPLICATION FORM",
+      "requiredPath": "/application"
+    },
+    {
+      "requiredText": "AMBASSADOR LOG-IN",
+      "requiredPath": "/authentication"
+    }
+  ]
 
+  return (
+    <Layout passedLinks={requiredLink}>
       <Link to={"./application"}>
         <button variant="raised">
             Application Page
@@ -68,7 +78,7 @@ const HomePage = () => {
       </Link>
 
       <LogOutButton />
-    </div>
+    </Layout>
   );
 };
 

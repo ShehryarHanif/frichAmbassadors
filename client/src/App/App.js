@@ -37,7 +37,6 @@
 
 // export default App;
 
-import { Fragment } from "react";
 import { Route, Switch } from "react-router-dom";
 
 import "./App.css";

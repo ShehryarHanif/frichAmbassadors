@@ -162,7 +162,7 @@ router.post("/users/new-user", ambassadorAuthentication, (req, res) => {
     const values = {
         "user_name": req.body.user_name,
         "user_email": req.body.user_email,
-        "user_ambassador_id": req.body.user_ambassador_id,
+        "user_ambassador_id": req.id,
         "user_referral_code": req.body.user_referral_code,
         "user_verification_status": req.body.user_verification_status
     };

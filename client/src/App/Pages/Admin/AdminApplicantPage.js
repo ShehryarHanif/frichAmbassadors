@@ -23,7 +23,7 @@ function AdminApplicantPage(props){
         .catch((err) => console.log(err));
   };
 
-  useEffect(getApplicant, []);
+  useEffect(getApplicant, [props.match.params.identifier]);
 
  const statusChanger = (newStatus) => {
     axios({

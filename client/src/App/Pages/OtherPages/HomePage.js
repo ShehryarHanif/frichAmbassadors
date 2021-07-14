@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 import InitialLayout from "../../Components/Layout/InitialLayout";
-import LogOutButton from "../../Components/Buttons/LogOutButton";
 
 const HomePage = () => {
   return (
@@ -65,8 +64,6 @@ const HomePage = () => {
             Admin's Generic Ambassador Page
         </button>
       </Link>
-
-      <LogOutButton />
     </InitialLayout>
   );
 };

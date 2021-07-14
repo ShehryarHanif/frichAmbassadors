@@ -41,6 +41,7 @@ import { Route, Switch } from "react-router-dom";
 
 import "./App.css";
 
+import InitialRoute from "./Components/Routes/InitialRoute";
 import AmbassadorRoute from "./Components/Routes/AmbassadorRoute";
 import AdminRoute from "./Components/Routes/AdminRoute";
 
@@ -61,14 +62,14 @@ import AdminNotificationsPage from "./Pages/Admin/AdminNotificationsPage";
 const App = () => {
   return (
     <Switch>
-      <Route exact path="/" component={ HomePage }/>
-      <Route exact path="/application" component={ ApplicationPage }/>
-      <Route exact path="/authentication" component={ AuthenticationPage }/>
+      <InitialRoute exact path="/" component={ HomePage }/>
+      <InitialRoute exact path="/application" component={ ApplicationPage }/>
+      <InitialRoute exact path="/authentication" component={ AuthenticationPage }/>
       <AmbassadorRoute exact path="/ambassador" component={ AmbassadorPage }/>
       <AmbassadorRoute exact path="/ambassador/users" component={ AmbassadorUsersPage }/>
       <AmbassadorRoute exact path="/ambassador/notifications" component={ AmbassadorNotificationsPage }/>
-      <Route exact path="/admin-authentication" component={ AdminAuthenticationPage }/>
-      <Route exact path="/admin" component={ AdminPage }/>
+      <InitialRoute exact path="/admin-authentication" component={ AdminAuthenticationPage }/>
+      <AdminRoute exact path="/admin" component={ AdminPage }/>
       <AdminRoute exact path="/admin/applicants" component={ AdminApplicantsPage }/>
       <AdminRoute exact path="/admin/applicants/:identifier" component={ AdminApplicantPage }/>
       <AdminRoute exact path="/admin/ambassadors" component={ AdminAmbassadorsPage }/>

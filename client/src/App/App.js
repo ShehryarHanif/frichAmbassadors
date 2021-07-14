@@ -75,7 +75,7 @@ const App = () => {
       <AdminRoute exact path="/admin/ambassadors" component={ AdminAmbassadorsPage }/>
       <AdminRoute exact path="/admin/ambassadors/:identifier" component={ AdminAmbassadorPage }/>
       <AdminRoute exact path="/admin/notifications/" component={ AdminNotificationsPage }/>
-      <Route path="*" component={ HomePage }/>
+      <InitialRoute path="*" component={ HomePage }/>
     </Switch>
   );
 };

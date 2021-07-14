@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import axios from "axios";
 
+import InitialLayout from "../../Components/Layout/InitialLayout";
+
 function ApplicationPage(props){    
   const [applicationFirstName, setApplicationFirstName] = useState("");
   const [applicationLastName, setApplicationLastName] = useState("");
@@ -82,33 +84,35 @@ function ApplicationPage(props){
   };
 
   return (
-    <form method="POST" onSubmit={ submissionHandler }>
-      <label>First Name</label>
-      <input type="text" value={ applicationFirstName } onChange={ firstNameChangeHandler } />
+    <InitialLayout>
+      <form method="POST" onSubmit={ submissionHandler }>
+        <label>First Name</label>
+        <input type="text" value={ applicationFirstName } onChange={ firstNameChangeHandler } />
 
-      <label>Last Name</label>
-      <input type="text" value={ applicationLastName } onChange={ lastNameChangeHandler } />
+        <label>Last Name</label>
+        <input type="text" value={ applicationLastName } onChange={ lastNameChangeHandler } />
 
-      <label>Email</label>
-      <input type="email" value={ applicationEmail } onChange={ emailChangeHandler } />
+        <label>Email</label>
+        <input type="email" value={ applicationEmail } onChange={ emailChangeHandler } />
 
-      <label>Instagram</label>
-      <input type="text" value={ applicationInstagram } onChange={ instagramChangeHandler } />
-      
-      <label>Tiktok</label>
-      <input type="text" value={ applicationTiktok } onChange={ tiktokChangeHandler } />
-      
-      <label>Referral Code</label>
-      <input type="text" value={ applicationReferralCode } onChange={ referralCodeChangeHandler } />
-      
-      <label>Question One</label>
-      <textarea cols="40" rows="10" maxlength="300" value={ applicationQuestionOne } onChange={ questionOneChangeHandler } />
+        <label>Instagram</label>
+        <input type="text" value={ applicationInstagram } onChange={ instagramChangeHandler } />
+        
+        <label>Tiktok</label>
+        <input type="text" value={ applicationTiktok } onChange={ tiktokChangeHandler } />
+        
+        <label>Referral Code</label>
+        <input type="text" value={ applicationReferralCode } onChange={ referralCodeChangeHandler } />
+        
+        <label>Question One</label>
+        <textarea cols="40" rows="10" maxlength="300" value={ applicationQuestionOne } onChange={ questionOneChangeHandler } />
 
-      <label>Question Two</label>
-      <textarea cols="40" rows="10" maxlength="300" value={ applicationQuestionTwo } onChange={ questionTwoChangeHandler } />
+        <label>Question Two</label>
+        <textarea cols="40" rows="10" maxlength="300" value={ applicationQuestionTwo } onChange={ questionTwoChangeHandler } />
 
-      <button type="submit">Apply</button>
-    </form>
+        <button type="submit">Apply</button>
+      </form>
+    </InitialLayout>
   );
 }
 

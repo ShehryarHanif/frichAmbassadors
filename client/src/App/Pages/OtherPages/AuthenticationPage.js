@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 
 import axios from "axios";
 
+import InitialLayout from "../../Components/Layout/InitialLayout";
+
 const AuthenticationPage = () => {
   const [ambassadorEmail, setAmbassadorEmail] = useState("");
   const [ambassadorPassword, setAmbassadorPassword] = useState("");
@@ -71,7 +73,7 @@ const AuthenticationPage = () => {
   };
 
   return (
-    <section>
+    <InitialLayout>
       <h1>Log In</h1>
 
       <form method="POST" onSubmit={ submissionHandler }>
@@ -89,7 +91,7 @@ const AuthenticationPage = () => {
           <button type="submit">Log In</button>
         </div>
       </form>
-    </section>
+    </InitialLayout>
   );
 };
 

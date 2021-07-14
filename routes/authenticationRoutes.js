@@ -45,10 +45,14 @@ router.post("/ambassador", (req, res) => {
             console.log("Search Error");
 
             console.log(err);
-        } else{            
+        } else if (results.length === 0) {
+            res.status(401).send("Email Problem");
+        } else {            
             bcrypt.compare(req.body.ambassador_password, results[0]["ambassador_password"], function(err) {
                 if (err){
                     console.log("Matching Error");
+
+                    res.status(401).send("PROBLEM");
                 } else {
                     const token = createToken(results[0]["ambassador_id"]);
 
@@ -70,6 +74,8 @@ router.post("/admin", (req, res) => {
         res.json(token);
     } else {
         console.log("Admin Error");
+
+        res.status(401).send("PROBLEM");
     }
 });
 

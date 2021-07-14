@@ -79,9 +79,16 @@ const InitialRoute = ({ component: Component, ...restOfProps }) => {
               setIsLoading(false);
           });
     }
+        
+    useEffect(() => {
+        const authenticationChecks = async () => {
+            await authenticationCheckOne();
+            await authenticationCheckTwo();
+        }
 
-    useEffect(authenticationCheckOne, []);
-    useEffect(authenticationCheckTwo, [])
+        authenticationChecks();
+    }, []);
+
 
     const AdminRedirectRender = () => <Redirect to="/admin" />;
 

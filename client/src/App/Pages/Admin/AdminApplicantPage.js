@@ -1,6 +1,8 @@
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect } from "react";
 
 import axios from "axios";
+
+import AdminLayout from "../../Components/Layout/AdminLayout";
 
 function AdminApplicantPage(props){    
   const [applicant, setApplicant] = useState({});
@@ -84,7 +86,7 @@ function AdminApplicantPage(props){
   };
 
   return (
-    <Fragment>
+    <AdminLayout>
       <table>
         <tr>
           <th>First Name</th>
@@ -121,7 +123,7 @@ function AdminApplicantPage(props){
       {tentativeAcceptance && <button onClick={acceptHandler}>Yes</button>}
       {tentativeAcceptance && <button onClick={acceptanceStateHandler}>No</button>}
 
-    </Fragment>
+    </AdminLayout>
 
   );
 }

@@ -27,7 +27,7 @@ const AdminRoute = ({ component: Component, ...restOfProps }) => {
 
     useEffect(authenticationCheck, []);
 
-    const redirectRender = () => <Redirect to="/admin/authentication" />;
+    const redirectRender = () => <Redirect to="/admin-authentication" />;
 
     const correctRender = (props) => <Component {...props} />;
 

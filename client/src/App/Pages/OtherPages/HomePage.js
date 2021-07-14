@@ -30,7 +30,7 @@ const HomePage = () => {
         </button>
       </Link>
 
-      <Link to={"./admin/authentication"}>
+      <Link to={"./admin-authentication"}>
         <button variant="raised">
             Admin's Authentication Page
         </button>

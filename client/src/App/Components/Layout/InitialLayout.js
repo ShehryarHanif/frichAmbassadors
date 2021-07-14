@@ -1,6 +1,8 @@
 import Layout from "./Layout";
 
 const InitialLayout = (props) => {
+    const mainLink = "/"
+
     const requiredLinks = [
         {
             "requiredText": "APPLICATION FORM",
@@ -13,7 +15,7 @@ const InitialLayout = (props) => {
     ]
 
     return (
-        <Layout passedLinks={requiredLinks}>
+        <Layout logoLink={mainLink} passedLinks={requiredLinks}>
             {props.children}
         </Layout>
     );

@@ -46,10 +46,12 @@ import AdminRoute from "./Components/Routes/AdminRoute";
 
 import HomePage from "./Pages/OtherPages/HomePage";
 import AuthenticationPage from "./Pages/OtherPages/AuthenticationPage";
+import AmbassadorPage from "./Pages/Ambassador/AmbassadorPage";
 import AmbassadorUsersPage from "./Pages/Ambassador/AmbassadorUsersPage";
 import AmbassadorNotificationsPage from "./Pages/Ambassador/AmbassadorNotificationsPage";
 import ApplicationPage from "./Pages/OtherPages/ApplicationPage";
 import AdminAuthenticationPage from "./Pages/Admin/AdminAuthenticationPage";
+import AdminPage from "./Pages/Admin/AdminPage";
 import AdminApplicantsPage from "./Pages/Admin/AdminApplicantsPage";
 import AdminApplicantPage from "./Pages/Admin/AdminApplicantPage";
 import AdminAmbassadorsPage from "./Pages/Admin/AdminAmbassadorsPage";
@@ -62,11 +64,11 @@ const App = () => {
       <Route exact path="/" component={ HomePage }/>
       <Route exact path="/application" component={ ApplicationPage }/>
       <Route exact path="/authentication" component={ AuthenticationPage }/>
-      {/* <Route exact path="/ambassador" component={ AmbassadorsPage }/> */}
+      <AmbassadorRoute exact path="/ambassador" component={ AmbassadorPage }/>
       <AmbassadorRoute exact path="/ambassador/users" component={ AmbassadorUsersPage }/>
       <AmbassadorRoute exact path="/ambassador/notifications" component={ AmbassadorNotificationsPage }/>
-      <Route exact path="/admin/authentication" component={ AdminAuthenticationPage }/>
-      {/* <Route exact path="/admin/main" component={ AdminMainPage }/> */}
+      <Route exact path="/admin-authentication" component={ AdminAuthenticationPage }/>
+      <Route exact path="/admin" component={ AdminPage }/>
       <AdminRoute exact path="/admin/applicants" component={ AdminApplicantsPage }/>
       <AdminRoute exact path="/admin/applicants/:identifier" component={ AdminApplicantPage }/>
       <AdminRoute exact path="/admin/ambassadors" component={ AdminAmbassadorsPage }/>

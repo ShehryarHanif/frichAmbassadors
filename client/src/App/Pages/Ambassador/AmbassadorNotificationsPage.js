@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 
 import axios from "axios";
 
+import AmbassadorLayout from "../../Components/Layout/AmbassadorLayout";
+
 function AmbassadorNotificationsPage(){    
   const [notifications, setNotifications] = useState([]);
 
@@ -14,22 +16,24 @@ function AmbassadorNotificationsPage(){
   useEffect(getData, []);
   
   return (
-    <table>
-    <tr>
-        <th>Content</th>
-        <th>Time</th>
-        <th></th>
-    </tr>
+    <AmbassadorLayout>  
+      <table>
+      <tr>
+          <th>Content</th>
+          <th>Time</th>
+          <th></th>
+      </tr>
 
-    { notifications.map((notification) => {
-        return (
-        <tr key={ notification["notification_id"] }>
-            <td>{ notification["notification_content"] }</td>
-            <td>{ notification["notification_created_at"] }</td>
-        </tr>
-        )
-    }) }
-    </table>
+      { notifications.map((notification) => {
+          return (
+          <tr key={ notification["notification_id"] }>
+              <td>{ notification["notification_content"] }</td>
+              <td>{ notification["notification_created_at"] }</td>
+          </tr>
+          )
+      }) }
+      </table>
+    </AmbassadorLayout>
   );
 }
 

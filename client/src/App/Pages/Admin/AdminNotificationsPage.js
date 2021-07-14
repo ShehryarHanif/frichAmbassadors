@@ -1,6 +1,8 @@
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect } from "react";
 
 import axios from "axios";
+
+import AdminLayout from "../../Components/Layout/AdminLayout";
 
 function AdminNotificationsPage(){    
   const [notifications, setNotifications] = useState([]);
@@ -56,7 +58,7 @@ function AdminNotificationsPage(){
 
   
   return (
-    <Fragment>
+    <AdminLayout>
       <form method="POST" onSubmit={ submissionHandler }>
         <label>Content</label>
         <input type="text" value={ newNotificationContent } onChange={ notificationChangeHandler } />
@@ -81,7 +83,7 @@ function AdminNotificationsPage(){
           )
         }) }
       </table>
-    </Fragment>
+    </AdminLayout>
 
   );
 }

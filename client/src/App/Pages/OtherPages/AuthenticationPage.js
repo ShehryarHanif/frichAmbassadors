@@ -67,7 +67,7 @@ const AuthenticationPage = () => {
       headers: {"Content-Type": "application/json"}
     })
       .then(() => {
-      history.replace("/");
+      history.replace("/ambassador");
     })
         .catch((error) => console.log(error));
   };

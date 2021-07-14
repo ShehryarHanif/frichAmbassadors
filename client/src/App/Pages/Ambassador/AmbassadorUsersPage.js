@@ -1,6 +1,8 @@
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect } from "react";
 
 import axios from "axios";
+
+import AmbassadorLayout from "../../Components/Layout/AmbassadorLayout";
 
 function AmbassadorUsersPage(){    
   const [users, setUsers] = useState([]);
@@ -87,7 +89,7 @@ function AmbassadorUsersPage(){
   };
 
   return (
-    <Fragment>
+    <AmbassadorLayout>
       <form method="POST" onSubmit={ submissionHandler }>
         <label>Name</label>
         <input type="text" value={ newUserName } onChange={ nameChangeHandler } />
@@ -119,7 +121,7 @@ function AmbassadorUsersPage(){
           )
         }) }
       </table>
-    </Fragment>
+    </AmbassadorLayout>
 
   );
 }

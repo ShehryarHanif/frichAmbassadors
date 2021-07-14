@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 
 import axios from "axios";
 
+import SecretLayout from "../../Components/Layout/SecretLayout";
+
 const AdminAuthenticationPage = () => {
   const [adminEmail, setAdminEmail] = useState("");
   const [adminPassword, setAdminPassword] = useState("");
@@ -37,13 +39,13 @@ const AdminAuthenticationPage = () => {
       headers: {"Content-Type": "application/json"}
     })
       .then(() => {
-      history.replace("/");
+      history.replace("/admin");
     })
         .catch((error) => console.log(error));
   };
 
   return (
-    <section>
+    <SecretLayout>
       <h1>Log In</h1>
 
       <form method="POST" onSubmit={ submissionHandler }>
@@ -61,7 +63,7 @@ const AdminAuthenticationPage = () => {
           <button type="submit">Log In</button>
         </div>
       </form>
-    </section>
+    </SecretLayout>
   );
 };
 

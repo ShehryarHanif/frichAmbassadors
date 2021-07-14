@@ -1,6 +1,8 @@
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect } from "react";
 
 import axios from "axios";
+
+import AdminLayout from "../../Components/Layout/AdminLayout";
 
 function AdminAmbassadorPage(props){    
   const [ambassador, setAmbassador] = useState({});
@@ -79,7 +81,7 @@ function AdminAmbassadorPage(props){
   };
 
     return (
-    <Fragment>
+    <AdminLayout>
       <table>
         <tr>
           <th>First Name</th>
@@ -131,7 +133,7 @@ function AdminAmbassadorPage(props){
           )
         }) }
       </table>
-    </Fragment>
+    </AdminLayout>
 
   );
 }

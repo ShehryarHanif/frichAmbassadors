@@ -11,7 +11,7 @@ const LogOutButton = () => {
         axios.get(`../authentication/log-out/`)
         .then((response) => {
           if(response.status === 200){
-                history.replace("/");
+                history.push("/");
           } else {
               throw new Error("There was a problem")
           }

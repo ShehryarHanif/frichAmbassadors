@@ -37,7 +37,7 @@
 
 // export default App;
 
-import { Route, Switch } from "react-router-dom";
+import { Switch } from "react-router-dom";
 
 import "./App.css";
 

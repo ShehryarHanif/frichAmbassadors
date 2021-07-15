@@ -1,0 +1,105 @@
+.headingContainer {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    font-family: "Roboto", sans-serif;
+    font-size: 2rem;
+    background-color: blue;
+    color: orange;
+}
+
+.formContainer {
+    border: 3px solid blue;
+    background-color: lightyellow;
+}
+
+.gridContainer {
+    display: grid;
+    height: 30rem;
+    margin: 20px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 20px 20px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "firstInput secondInput fourthInput fourthInput fourthInput"
+      "thirdInput thirdInput fourthInput fourthInput fourthInput"
+      "fifthInput fifthInput eighthInput eighthInput eighthInput"
+      "sixthInput sixthInput eighthInput eighthInput eighthInput"
+      "seventhInput seventhInput eighthInput eighthInput eighthInput"
+      "submission submission submission submission submission";
+    font-family: "Roboto", "sans-serif";
+}
+
+@media only screen and (max-width:800px){
+    .container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        gap: 20px 20px;
+        grid-auto-flow: row;
+        grid-template-areas:
+          "firstInput"
+          "secondInput"
+          "thirdInput"
+          "fourthInput"
+          "fifthInput"
+          "sixthInput"
+          "seventhInput"
+          "eighthInput"
+          "submission";
+        font-family: "Roboto", "sans-serif";
+    }
+}
+  
+.firstInput {
+    grid-area: firstInput;
+}
+  
+.secondInput {
+    grid-area: secondInput;
+}
+  
+.thirdInput {
+    grid-area: thirdInput;
+}
+  
+.fifthInput {
+    grid-area: fifthInput;
+}
+  
+.sixthInput {
+    grid-area: sixthInput;
+}
+  
+.seventhInput {
+    grid-area: seventhInput;
+}
+  
+.fourthInput {
+    grid-area: fourthInput;
+}
+  
+.eighthInput {
+    grid-area: eighthInput;
+}
+
+.gridContainer textarea {
+    border: 1px solid orange;
+    resize: none;
+}
+
+.gridContainer textarea::placeholder {
+    font-size: 0.8rem;
+    color: orange;
+}
+
+.submission {
+    grid-area: submission;
+    border: 2px solid blue;
+    background-color: orange;
+    color: blue;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}

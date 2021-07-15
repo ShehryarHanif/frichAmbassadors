@@ -5,10 +5,10 @@ import axios from "axios";
 import AdminLayout from "../../Components/Layout/AdminLayout";
 
 function AdminAmbassadorPage(props){    
-  const [ambassador, setAmbassador] = useState({});
-  const [users, setUsers] = useState([]);
-  const [numberOfUsers, setNumberOfUsers] = useState(null);
-  const [verifiedNumberOfUsers, setVerifiedNumberOfUsers] = useState(null);
+  const [ambassador, setAmbassador] = useState();
+  const [users, setUsers] = useState();
+  const [numberOfUsers, setNumberOfUsers] = useState();
+  const [verifiedNumberOfUsers, setVerifiedNumberOfUsers] = useState();
 
   const getAmbassador = () => {
     axios.get(`/api/ambassadors-info/${props.match.params.identifier}`)
@@ -45,7 +45,7 @@ function AdminAmbassadorPage(props){
     }
 
     getInformation();
-  }, [ambassador]);
+  });
 
   const submissionHandler = (passedElement) => {
     props.history.push(`/admin/applicants/${passedElement}`);

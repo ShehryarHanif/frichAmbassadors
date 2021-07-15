@@ -96,27 +96,19 @@ const InitialRoute = ({ component: Component, ...restOfProps }) => {
 
     const correctRender = (props) => <Component {...props} />;
 
-    if(isLoading){
-        console.log("Log In");
-        
+    if(isLoading){        
         return (
           <div></div>  
         );
     } else if(doRedirectToAdmin){
-        console.log("Admin");
-
         return (
             <Route {...restOfProps} render={AdminRedirectRender} />
         );
     } else if(doRedirectToAmbassador){
-        console.log("Ambassador");
-
         return (
             <Route {...restOfProps} render={AmbassadorRedirectRender} />
         );
     } else{
-        console.log("No One");
-
         return (
             <Route {...restOfProps} render={correctRender} />
         );

@@ -96,6 +96,24 @@
     font-style: italic;
     font-size: 18px;
     margin-bottom: 15px;
+    font-style: bold;
+}
+
+.encouragement a {
+    color: orange;
+    text-decoration: none;
+}
+
+.encouragement a:visited{
+    color: orange;
+}
+
+.encouragement a:link{
+    color: orange;
+}
+
+.encouragement a:hover{
+    color: blue;
 }
 
 .questioning {
@@ -108,6 +126,14 @@
     text-decoration: none;
 }
 
-.questioning a:hover, .questioning a:focus{
+.questioning a:visited{
+    color: orange;
+}
+
+.questioning a:link{
+    color: orange;
+}
+
+.questioning a:hover{
     color: blue;
 }

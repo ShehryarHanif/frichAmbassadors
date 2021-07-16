@@ -1,0 +1,61 @@
+
+.homeContainer {
+    border: 3px solid blue;
+    background-color: lightyellow;
+    font-family: "Roboto", sans-serif;
+}
+
+.startingContainer {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.announcementContainer {
+    color: blue;
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+    margin-bottom: 5px;
+}
+
+.initialInformation {
+    -webkit-text-fill-color: orange;
+    -webkit-background-clip: text;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: blue;
+    font-size: 25px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.programDescription {
+    text-align: justify;
+    font-size: 18px;
+}
+
+.benefitsContainer {
+    /* border: 3px solid blue; */
+    background-color: lightyellow;
+    /* margin: 20px; */
+    padding-top: 15px;
+}
+
+.benefitsHeading {
+    color: blue;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.benefitsList {
+    list-style-type: none;
+    -webkit-padding-start: 0;
+    list-style-position: inside;
+    margin: 20px;
+}
+
+.benefitsList li {
+    font-style: italic;
+}

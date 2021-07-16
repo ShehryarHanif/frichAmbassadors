@@ -14,29 +14,31 @@ const HomeInformation = () => {
             <div className={classes.benefitsContainer}>
                 <div className={classes.benefitsHeading}>BENEFITS</div>
 
-                <ul className={classes.benefitsList}>
-                    <li>Valuable early stage startup experience</li>
-                    <br />
-                    <li>Strong recommendation letter and dedicated career mentorship from mentors</li>
-                    <br />
-                    <li>Milestone-based cash bonuses with the possibility of earning shares in the company</li>
-                    <br />
-                    <li>Possibility to grow alongside the company and build a career in fintech</li>
-                </ul>
+                <div className={classes.listContainer}>        
+                    <ul className={classes.benefitsList}>
+                        <li>Valuable early stage startup experience</li>
+                        <br />
+                        <li>Strong recommendation letter and dedicated career mentorship from mentors</li>
+                        <br />
+                        <li>Milestone-based cash bonuses with the possibility of earning shares in the company</li>
+                        <br />
+                        <li>Possibility to grow alongside the company and build a career in fintech</li>
+                    </ul>
+                </div>
             </div>
 
-            <div className={classes.benefitsContainer}>
-                <div className={classes.benefitsHeading}>HOW TO APPLY</div>
+            <div className={classes.applicationContainer}>
+                <div className={classes.applicationHeading}>HOW TO APPLY</div>
 
-                <ul className={classes.benefitsList}>
-                    <li>Valuable early stage startup experience</li>
-                    <br />
-                    <li>Strong recommendation letter and dedicated career mentorship from mentors</li>
-                    <br />
-                    <li>Milestone-based cash bonuses with the possibility of earning shares in the company</li>
-                    <br />
-                    <li>Possibility to grow alongside the company and build a career in fintech</li>
-                </ul>
+                <div className={classes.applicationDescription}>
+                    If you are a self-starter, an innovator, an out-of-the-box thinker, well,
+                    <div className={classes.emptyBox} />
+                    <b>WE NEED YOU</b>
+                </div>
+
+                <div className={classes.encouragement}>Become an ambassador today!</div>
+
+                <div className={classes.questioning}>Not convinced or still need more info? <a href="https://www.instagram.com/frichmoney" target="_blank">CLICK HERE</a></div>
             </div>       
         </div>
     )

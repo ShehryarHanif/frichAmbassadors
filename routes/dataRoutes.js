@@ -66,7 +66,9 @@ router.post("/new-applicant", (req, res) => {
         "applicant_referral_code": req.body.applicant_referral_code,
         "applicant_question_one": req.body.applicant_question_one,
         "applicant_question_two": req.body.applicant_question_two,
-        "applicant_registration_status": "pending"
+        "applicant_registration_status": "pending",
+        "applicant_university": req.body.applicant_university,
+        "applicant_university_location": req.body.applicant_university_location
     };
 
     connection.query(insertQuery, values, function(err, results){
@@ -105,7 +107,7 @@ router.get("/ambassadors", adminAuthentication, (req, res) => {
 });
 
 router.get("/ambassadors/ambassador-info", ambassadorAuthentication, (req, res) => {
-    const queryString = "SELECT ambassador_id, ambassador_first_name, ambassador_last_name, ambassador_email, ambassador_referral_code, ambassador_tier FROM ambassadors WHERE ambassadors.ambassador_id = ?;";
+    const queryString = "SELECT ambassador_id, ambassador_first_name, ambassador_last_name, ambassador_email, ambassador_referral_code, ambassador_university, ambassador_university_location, ambassador_tier FROM ambassadors WHERE ambassadors.ambassador_id = ?;";
 
     connection.query(queryString, req.id, function(err, results){
         if (err){
@@ -340,6 +342,8 @@ router.post("/applicants/ambassador-creator/", adminAuthentication, (req, res) =
                 "ambassador_instagram": req.body.applicant_instagram,
                 "ambassador_tiktok": req.body.applicant_tiktok,
                 "ambassador_referral_code": req.body.applicant_referral_code,
+                "ambassador_university": req.body.applicant_university,
+                "ambassador_university_location": req.body.applicant_university_location,
                 "ambassador_password": hash || "genericPassword",
                 "ambassador_tier": "bronze",
                 "ambassador_applicant_id": req.body.applicant_id

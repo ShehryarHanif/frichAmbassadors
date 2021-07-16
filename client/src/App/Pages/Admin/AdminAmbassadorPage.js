@@ -90,6 +90,8 @@ function AdminAmbassadorPage(props){
           <th>Last Name</th>
           <th>Email</th>
           <th>Referral Code</th>
+          <th>University</th>
+          <th>State</th>
           <th>Number of Users</th>
           <th>Number of Verified Users</th>
           <th>Tier</th>
@@ -103,9 +105,11 @@ function AdminAmbassadorPage(props){
           <td>{ ambassador["ambassador_last_name"] }</td>
           <td>{ ambassador["ambassador_email"] }</td>
           <td>{ ambassador["ambassador_referral_code"] }</td>
+          <td>{ ambassador["ambassador_university"] }</td>
+          <td>{ ambassador["ambassador_university_location"] }</td>
           <td>{ numberOfUsers }</td>
           <td>{ verifiedNumberOfUsers }</td>
-          <td>{ ambassador["ambasador_tier"] }</td>
+          <td>{ ambassador["ambassador_tier"] }</td>
           <td>{ ambassador["ambassador_instagram"] }</td>
           <td>{ ambassador["ambassador_tiktok"] }</td>
           <td><button onClick={submissionHandler.bind(null, ambassador["ambassador_applicant_id"])} >Go To Application</button></td>

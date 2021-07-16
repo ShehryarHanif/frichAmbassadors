@@ -13,6 +13,8 @@ const ApplicationForm = (props) => {
   const [applicationReferralCode, setApplicationReferralCode] = useState("");
   const [applicationQuestionOne, setApplicationQuestionOne] = useState("");
   const [applicationQuestionTwo, setApplicationQuestionTwo] = useState("");
+  const [applicationUniversity, setApplicationUniversity] = useState("");
+  const [applicationLocation, setApplicationLocation] = useState("");
 
   const firstNameChangeHandler = (event) => {
     setApplicationFirstName(event.target.value);
@@ -45,6 +47,14 @@ const ApplicationForm = (props) => {
   const questionTwoChangeHandler = (event) => {
     setApplicationQuestionTwo(event.target.value);
   };
+     
+  const universityChangeHandler = (event) => {
+    setApplicationUniversity(event.target.value);
+  }
+     
+  const locationChangeHandler = (event) => {
+    setApplicationLocation(event.target.value);
+  };
 
   const submissionHandler = (event) => {
     event.preventDefault();
@@ -58,6 +68,8 @@ const ApplicationForm = (props) => {
       "applicant_referral_code": applicationReferralCode,
       "applicant_question_one": applicationQuestionOne,
       "applicant_question_two": applicationQuestionTwo,
+      "applicant_university": applicationUniversity,
+      "applicant_university_location": applicationLocation,
       "applicant_registration_status": "pending"
     }
 
@@ -84,6 +96,10 @@ const ApplicationForm = (props) => {
                 <textarea type="text" className={classes.secondInput} placeholder="Last Name *" required value={ applicationLastName } onChange={ lastNameChangeHandler } />
 
                 <textarea type="text" className={classes.thirdInput} placeholder="Referral Code *" required value={ applicationReferralCode } onChange={ referralCodeChangeHandler } />
+                
+                <textarea type="text" className={classes.ninthInput} required placeholder="University Name *" value={ applicationUniversity } onChange={ universityChangeHandler } />
+
+                <textarea type="text" className={classes.tenthInput} required placeholder="University State *" value={ applicationLocation } onChange={ locationChangeHandler } />
 
                 <textarea className={classes.fourthInput}  cols="40" rows="10" maxlength="300" required placeholder="Describe yourself in one sentence. *" value={ applicationQuestionOne } onChange={ questionOneChangeHandler } />
 

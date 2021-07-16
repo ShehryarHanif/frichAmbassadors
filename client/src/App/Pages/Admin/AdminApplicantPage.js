@@ -94,6 +94,8 @@ function AdminApplicantPage(props){
           <th>Email</th>
           <th>Referral Code</th>
           <th>Registration Status</th>
+          <th>University</th>
+          <th>University Location</th>
           <th>Instagram</th>
           <th>TikTok</th>
           <th>Answer 1</th>
@@ -107,6 +109,8 @@ function AdminApplicantPage(props){
           <td>{ applicant["applicant_email"] }</td>
           <td>{ applicant["applicant_referral_code"] }</td>
           <td>{ applicant["applicant_registration_status"] }</td>
+          <td>{ applicant["applicant_university"] }</td>
+          <td>{ applicant["applicant_university_location"] }</td>
           <td>{ applicant["applicant_instagram"] }</td>
           <td>{ applicant["applicant_tiktok"] }</td>
           <td>{ applicant["applicant_question_one"] }</td>

@@ -15,9 +15,14 @@ function AdminNotificationsPage(){
 
   useEffect(getData, []);
   
+  const [newNotificationSubject, setNewNotificationSubject] = useState("");
   const [newNotificationContent, setNewNotificationContent] = useState("");
 
-  const notificationChangeHandler = (event) => {
+  const notificationSubjectChangeHandler = (event) => {
+    setNewNotificationSubject(event.target.value);
+  };
+
+  const notificationContentChangeHandler = (event) => {
     setNewNotificationContent(event.target.value);
   };
 
@@ -28,7 +33,8 @@ function AdminNotificationsPage(){
       method: "post",
       url: "/api/new-notification",
       data: {
-          "new_notification_content": newNotificationContent
+        "new_notification_subject": newNotificationSubject,
+        "new_notification_content": newNotificationContent
       },
       headers: {"Content-Type": "application/json"}
     })
@@ -61,13 +67,17 @@ function AdminNotificationsPage(){
     <AdminLayout>
       <form method="POST" onSubmit={ submissionHandler }>
         <label>Content</label>
-        <input type="text" value={ newNotificationContent } onChange={ notificationChangeHandler } />
+        <input type="text" value={ newNotificationSubject } onChange={ notificationSubjectChangeHandler } />
+
+        <label>Content</label>
+        <input type="text" value={ newNotificationContent } onChange={ notificationContentChangeHandler } />
 
         <button type="submit">Send Notification</button>
       </form>
 
       <table>
         <tr>
+          <th>Subject</th>
           <th>Content</th>
           <th>Time</th>
           <th></th>
@@ -76,6 +86,7 @@ function AdminNotificationsPage(){
         { notifications.map((notification) => {
           return (
             <tr key={ notification["notification_id"] }>
+              <td>{notification["notification_subject"]}</td>
               <td>{ notification["notification_content"] }</td>
               <td>{ notification["notification_created_at"] }</td>
               <td><button onClick={deletionHandler.bind(null, notification["notification_id"])}>Delete Notification</button></td>

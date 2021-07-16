@@ -206,6 +206,7 @@ router.post("/new-notification", adminAuthentication, (req, res) => {
     const insertQuery = `INSERT INTO notifications SET ?;`;
     
     const value = {
+        "notification_subject": req.body.new_notification_subject,
         "notification_content": req.body.new_notification_content
     };
 

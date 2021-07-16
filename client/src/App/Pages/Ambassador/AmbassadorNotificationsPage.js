@@ -19,6 +19,7 @@ function AmbassadorNotificationsPage(){
     <AmbassadorLayout>  
       <table>
       <tr>
+          <th>Subject</th>
           <th>Content</th>
           <th>Time</th>
           <th></th>
@@ -27,6 +28,7 @@ function AmbassadorNotificationsPage(){
       { notifications.map((notification) => {
           return (
           <tr key={ notification["notification_id"] }>
+              <td>{ notification["notification_subject"] }</td>
               <td>{ notification["notification_content"] }</td>
               <td>{ notification["notification_created_at"] }</td>
           </tr>

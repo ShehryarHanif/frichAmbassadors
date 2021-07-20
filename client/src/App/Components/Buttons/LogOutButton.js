@@ -5,6 +5,8 @@ import axios from "axios";
 
 import { loginActions } from "../../store/loginStore";
 
+import classes from "./LogoutButton.module.css";
+
 const LogoutButton = () => {
     const dispatch = useDispatch();
 
@@ -29,7 +31,7 @@ const LogoutButton = () => {
 
     if(loginStatus){
         return (
-        <button onClick={logoutHandler}>Log Out</button>
+        <button onClick={logoutHandler} className={classes.button}>LOG OUT</button>
         );
     } else{
         return null;

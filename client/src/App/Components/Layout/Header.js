@@ -11,6 +11,8 @@ const Header = (props) => {
     <header className={classes.header}>
       <Link className={classes.logo} to={props.imageLink}><img src={frichLogo} alt={"Frich Ambassadors"}/></Link>
 
+      <LogOutButton />
+
       <nav>
         <ul>
           {props.links && props.links.map((specificLink, index) => (
@@ -19,8 +21,6 @@ const Header = (props) => {
           )}
         </ul>
       </nav>
-
-      <LogOutButton />
     </header>
   );
 }

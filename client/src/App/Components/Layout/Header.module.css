@@ -1,58 +1,19 @@
 .header {
-    height: 4.5rem;
-    display: flex;
-    align-items: center;
     background-color: lightgrey;
-    padding: 0 5%;
     border-bottom: solid 2px #4300F7;
-}
-  
-.logo {
-    font-size: 1.5rem;
-    color: white;
-    font-weight: bold;
+    font-family: "Roboto", sans-serif;
 }
 
-.header button {
-    position: absolute;
-    right: 2.5rem;
+.header img{
+    margin-right: 20px;
 }
 
-.header nav {
-    padding-top: 100%;
-    padding-bottom: 100%;
-}
-
-.header img {
-    height: 3rem;
-    margin-top: 100%;
-    margin-bottom: 100%;
-}
-
-.header ul {
-    list-style: none;
-    display: flex;
-    font-family: "Roboto" "sans-serif";
-}
-
-.header ul li {
-    display: flex-item;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-right: 10px;
-    
-}
-
-.header ul:last-child {
-    padding-right: 5px;
-}
-  
 .header a {
     text-decoration: none;
-    font-size: 1.7rem;
-    color: #4300F7;
+    font-size: 1.5rem;
+    color: #4300F7 !important;
 }
-  
-.header a:hover, .header a:active, .header a.active {
-    color: #FF6E00;
-}  
+
+.header a:hover, header a:active, .header a.active {
+    color: #FF6E00 !important;
+} 

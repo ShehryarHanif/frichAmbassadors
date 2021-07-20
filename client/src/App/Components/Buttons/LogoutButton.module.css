@@ -1,8 +1,8 @@
 .button {
     background-color: orange; /* Green */
     border: 1px solid blue;
-    color: blue;
-    padding: 15px 32px;
+    color: #0000ff;
+    padding: 5px 11px;
     text-align: center;
     text-decoration: none;
     display: inline-block;

@@ -1,11 +1,16 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import axios from "axios";
 
 import InitialLayout from "../../Components/Layout/InitialLayout";
 
+import { loginActions } from "../../store/loginStore";
+
 const AuthenticationPage = () => {
+  const dispatch = useDispatch();
+
   const [ambassadorEmail, setAmbassadorEmail] = useState("");
   const [ambassadorPassword, setAmbassadorPassword] = useState("");
 
@@ -27,34 +32,6 @@ const AuthenticationPage = () => {
 
     console.log(enteredEmail, enteredPassword);
     
-    // fetch("/authentication/ambassador",
-    // {
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     ambassador_email: enteredEmail,
-    //     ambassador_password: enteredPassword,
-    //   }),
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   }
-    // }).then((res) => {
-    //   if(res.ok) {
-    //     return res.json();
-    //   } else {
-    //     return res.json().then((data) => {
-    //       let errorMessage = "Authentication Failed";
-
-    //       throw new Error(errorMessage);
-    //     })
-    //   }
-    // }).then((data) => {
-    //   history.replace("/");
-    // }).catch((err) => {
-    //   console.log(err);
-
-    //   alert(err.message);
-    // });
-
     const formData = {
       "ambassador_email": enteredEmail,
       "ambassador_password": enteredPassword
@@ -67,7 +44,9 @@ const AuthenticationPage = () => {
       headers: {"Content-Type": "application/json"}
     })
       .then(() => {
-      history.replace("/ambassador");
+        dispatch(loginActions.toggle());
+        
+        history.replace("/ambassador");
     })
         .catch((error) => console.log(error));
   };

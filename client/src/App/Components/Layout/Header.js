@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 
+import LogOutButton from "../Buttons/LogoutButton";
+
 import frichLogo from "../../../images/frichLogo.png";
 
 import classes from "./Header.module.css";
 
 const Header = (props) => {
-
   return (
     <header className={classes.header}>
       <Link className={classes.logo} to={props.imageLink}><img src={frichLogo} alt={"Frich Ambassadors"}/></Link>
@@ -18,6 +19,8 @@ const Header = (props) => {
           )}
         </ul>
       </nav>
+
+      <LogOutButton />
     </header>
   );
 }

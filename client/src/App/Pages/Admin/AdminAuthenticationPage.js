@@ -1,11 +1,16 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import axios from "axios";
 
 import SecretLayout from "../../Components/Layout/SecretLayout";
 
+import { loginActions } from "../../store/loginStore";
+
 const AdminAuthenticationPage = () => {
+  const dispatch = useDispatch();
+
   const [adminEmail, setAdminEmail] = useState("");
   const [adminPassword, setAdminPassword] = useState("");
 
@@ -39,7 +44,9 @@ const AdminAuthenticationPage = () => {
       headers: {"Content-Type": "application/json"}
     })
       .then(() => {
-      history.replace("/admin");
+        dispatch(loginActions.toggle());
+
+        history.replace("/admin");
     })
         .catch((error) => console.log(error));
   };

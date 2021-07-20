@@ -1,28 +1,39 @@
 import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 import axios from "axios";
 
-const LogOutButton = () => {
+import { loginActions } from "../../store/loginStore";
+
+const LogoutButton = () => {
+    const dispatch = useDispatch();
+
+    const loginStatus = useSelector((state) => state.login.loginStatus);
+
     const history = useHistory();
 
     const logoutHandler = () => {
-        console.log("Entry Here");
-
-        axios.get(`../authentication/log-out/`)
+        axios.get(`/authentication/log-out/`)
         .then((response) => {
           if(response.status === 200){
-                history.push("/");
+            dispatch(loginActions.toggle());
+
+            history.push("/");
           } else {
               throw new Error("There was a problem")
           }
         }).catch((err) => {
               console.log(err);
-          });
+        });
     }
 
-    return(
+    if(loginStatus){
+        return (
         <button onClick={logoutHandler}>Log Out</button>
-    )
+        );
+    } else{
+        return null;
+    }
 }
 
-export default LogOutButton;
+export default LogoutButton;

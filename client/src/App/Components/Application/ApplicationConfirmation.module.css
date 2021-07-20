@@ -1,5 +1,13 @@
+.confirmationContainer{
+    border: 3px solid blue;
+    background-color: lightyellow;
+    font-family: "Roboto", sans-serif;
+}
+
 .message {
     text-align: center;
+    border: 2px solid orange;
+    margin:20px;
     margin-bottom: 30px;
     padding: 20px;
     font-family: "Roboto", sans-serif;
@@ -8,14 +16,41 @@
     color: orange;
 }
 
-.link {
-    text-decoration: none;
+.futureInformation{
+    display: table;
+    position: center;
+    border: 2px solid blue;
+    padding: 20px;
+    margin-right: auto;
+    margin-left: auto; 
+    margin-bottom: 30px;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.5rem;
+    background-color: orange;
+    color: blue;
+}
+
+.links {
     font-size: 1.5rem;
     color: #4300F7;
     text-align: center;
     width: 100%;
+    margin-bottom: 20px;
 }
 
-a:hover, a:active, a.active {
-    color: black;
-}  
+a {
+    color: orange;
+    text-decoration: none;
+}
+
+a:visited{
+    color: orange;
+}
+
+a:link{
+    color: orange;
+}
+
+a:hover{
+    color: blue;
+}

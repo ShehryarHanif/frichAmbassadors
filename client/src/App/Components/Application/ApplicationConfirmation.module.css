@@ -38,19 +38,19 @@
     margin-bottom: 20px;
 }
 
-a {
+.links a {
     color: orange;
     text-decoration: none;
 }
 
-a:visited{
+.links a:visited{
     color: orange;
 }
 
-a:link{
+.links a:link{
     color: orange;
 }
 
-a:hover{
+.links a:hover{
     color: blue;
 }

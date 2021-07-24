@@ -1,7 +1,5 @@
 import { Switch, Route } from "react-router-dom";
 
-import "./App.css";
-
 import HomePage from "./Pages/OtherPages/HomePage";
 import AuthenticationPage from "./Pages/OtherPages/AuthenticationPage";
 import AmbassadorPage from "./Pages/Ambassador/AmbassadorPage";
@@ -40,8 +38,6 @@ const App = () => {
 export default App;
 
 // import { Switch } from "react-router-dom";
-
-// import "./App.css";
 
 // import InitialRoute from "./Components/Routes/InitialRoute";
 // import AmbassadorRoute from "./Components/Routes/AmbassadorRoute";

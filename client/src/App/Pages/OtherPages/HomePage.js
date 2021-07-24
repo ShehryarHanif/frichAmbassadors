@@ -1,11 +1,15 @@
 import InitialLayout from "../../Components/Layout/InitialLayout";
 import HomeInformation from "../../Components/HomeInformation/HomeInformation"
 
+import classes from "./HomePage.module.css";
+
 const HomePage = () => {
   return (
-    <InitialLayout>
-      <HomeInformation/>
-    </InitialLayout>
+    <div className={classes.homePageBackground}>
+      <InitialLayout>
+        <HomeInformation/>
+      </InitialLayout>
+    </div>
   );
 };
 

@@ -1,6 +1,6 @@
 import LogoutButton from "../Buttons/LogoutButton";
 
-import frichLogo from "../../../images/frichLogo.png";
+import frichLogo from "../../../assets/frichLogo.png";
 
 import classes from "./Header.module.css";
 

@@ -2,15 +2,17 @@
     text-align: center;
     margin-bottom: 30px;
     padding: 20px;
-    font-family: "Roboto", sans-serif;
-    font-size: 2rem;
-    background-color: blue;
-    color: orange;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.75rem;
+    background-color: #4300F7;
+    color: #FF6E00;
+    font-weight: bold;
 }
 
 .formContainer {
     border: 3px solid blue;
-    background-color: lightyellow;
+    background-color: #D7F684;
+    font-family: "Montserrat", sans-serif;
 }
 
 .gridContainer {
@@ -30,7 +32,7 @@
       "sixthInput sixthInput eighthInput eighthInput eighthInput"
       "seventhInput seventhInput eighthInput eighthInput eighthInput"
       "submission submission submission submission submission";
-    font-family: "Roboto", "sans-serif";
+    font-family: "Montserrat", "sans-serif";
 }          
           
         
@@ -75,20 +77,20 @@
 }
 
 .gridContainer textarea {
-    border: 1px solid orange;
+    border: 1px solid #4300F7;
     resize: none;
 }
 
 .gridContainer textarea::placeholder {
     font-size: 0.8rem;
-    color: orange;
+    color: #4300F7;
 }
 
 .submission {
     grid-area: submission;
-    border: 2px solid blue;
-    background-color: orange;
-    color: blue;
+    border: 2px solid #FF6E00;
+    background-color: #4300F7;
+    color: #FF6E00;
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;

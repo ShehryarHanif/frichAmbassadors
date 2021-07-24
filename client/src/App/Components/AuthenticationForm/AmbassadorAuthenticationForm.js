@@ -9,42 +9,40 @@ import { loginActions } from "../../store/loginStore";
 const AdminAuthenticationForm = () => {
   const dispatch = useDispatch();
 
-  const [adminEmail, setAdminEmail] = useState("");
-  const [adminPassword, setAdminPassword] = useState("");
+  const [ambassadorEmail, setAmbassadorEmail] = useState("");
+  const [ambassadorPassword, setAmbassadorPassword] = useState("");
 
   const history = useHistory();
 
   const emailChangeHandler = (event) => {
-    setAdminEmail(event.target.value);
+    setAmbassadorEmail(event.target.value);
   };
 
   const passwordChangeHandler = (event) => {
-    setAdminPassword(event.target.value);
+    setAmbassadorPassword(event.target.value);
   };
 
   const submissionHandler = (event) => {
     event.preventDefault();
   
-    const enteredEmail = adminEmail;
-    const enteredPassword = adminPassword;
-
-    console.log(enteredEmail, enteredPassword);
-
+    const enteredEmail = ambassadorEmail;
+    const enteredPassword = ambassadorPassword;
+    
     const formData = {
-      "admin_email": enteredEmail,
-      "admin_password": enteredPassword
+      "ambassador_email": enteredEmail,
+      "ambassador_password": enteredPassword
     }
     
     axios({
       method: "post",
-      url: "../authentication/admin",
+      url: "../authentication/ambassador",
       data: formData,
       headers: {"Content-Type": "application/json"}
     })
       .then(() => {
         dispatch(loginActions.toggle());
-
-        history.replace("/admin");
+        
+        history.replace("/ambassador");
     })
         .catch(() => alert("THERE WAS A PROBLEM. TRY AGAIN!"));
   };

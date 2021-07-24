@@ -1,6 +1,6 @@
 .header {
-    background-color: lightgrey;
-    border-bottom: solid 2px #4300F7;
+    background-color: #4300F7;
+    border-bottom: solid 2px #D7F684;
     font-family: "Roboto", sans-serif;
 }
 
@@ -11,9 +11,9 @@
 .header a {
     text-decoration: none;
     font-size: 1.5rem;
-    color: #4300F7 !important;
+    color: white !important;
 }
 
 .header a:hover, header a:active, .header a.active {
-    color: #FF6E00 !important;
+    color: #F36F27 !important;
 } 

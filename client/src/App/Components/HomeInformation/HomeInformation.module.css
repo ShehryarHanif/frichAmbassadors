@@ -1,7 +1,8 @@
 .homeContainer {
     border: 3px solid blue;
-    background-color: lightyellow;
-    font-family: "Roboto", sans-serif;
+    background-color: #D7F684;
+    font-family: "Montserrat", sans-serif;
+    padding-bottom: 20px;
 }
 
 .startingContainer {
@@ -19,11 +20,11 @@
 }
 
 .initialInformation {
-    -webkit-text-fill-color: orange;
+    -webkit-text-fill-color: #D7F684;
     -webkit-background-clip: text;
     -webkit-text-stroke-width: 0.5px;
     -webkit-text-stroke-color: blue;
-    font-size: 25px;
+    font-size: 23px;
     margin-bottom: 10px;
     text-align: center;
 }
@@ -34,9 +35,6 @@
 }
 
 .benefitsContainer {
-    /* border: 3px solid blue; */
-    background-color: lightyellow;
-    /* margin: 20px; */
     padding-top: 15px;
 }
 
@@ -54,10 +52,10 @@
 }
 
 .benefitsList {
-    list-style-type: none;
     -webkit-padding-start: 0;
     list-style-position: inside;
     margin: 20px;
+    list-style-image: url("../../../assets/benefitBulletPoint.png");
 }
 
 .benefitsList li {
@@ -65,8 +63,6 @@
 }
 
 .applicationContainer {
-    /* border: 3px solid blue; */
-    background-color: lightyellow;
     margin-right: 50px;
     margin-left: 50px;
     padding-top: 15px;
@@ -87,7 +83,7 @@
 
 .applicationDescription {
     text-align: center;
-    font-size: 18px;
+    font-size: 15px;
     margin-bottom: 15px;
 }
 

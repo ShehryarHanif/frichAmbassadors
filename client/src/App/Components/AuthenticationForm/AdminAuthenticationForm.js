@@ -6,7 +6,9 @@ import axios from "axios";
 
 import { loginActions } from "../../store/loginStore";
 
-const AdminAuthenticationForm = () => {
+import classes from "./AdminAuthenticationForm.module.css";
+
+const AdminAuthenticationForm = (props) => {
   const dispatch = useDispatch();
 
   const [adminEmail, setAdminEmail] = useState("");
@@ -28,8 +30,6 @@ const AdminAuthenticationForm = () => {
     const enteredEmail = adminEmail;
     const enteredPassword = adminPassword;
 
-    console.log(enteredEmail, enteredPassword);
-
     const formData = {
       "admin_email": enteredEmail,
       "admin_password": enteredPassword
@@ -50,7 +50,7 @@ const AdminAuthenticationForm = () => {
   };
 
   return (
-    <div>
+    <div className={`${classes.mainContainer} ${props.className}`}>
       <h1>Log In</h1>
 
       <form method="POST" onSubmit={ submissionHandler }>

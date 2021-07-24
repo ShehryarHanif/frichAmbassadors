@@ -1,5 +1,5 @@
 .homeContainer {
-    border: 3px solid blue;
+    border: 3px solid #3C06EB;
     background-color: #D7F684;
     font-family: "Montserrat", sans-serif;
     padding-bottom: 20px;
@@ -12,7 +12,7 @@
 }
 
 .announcementContainer {
-    color: blue;
+    color: #3C06EB;
     text-align: center;
     font-weight: bold;
     font-size: 40px;
@@ -23,7 +23,7 @@
     -webkit-text-fill-color: #D7F684;
     -webkit-background-clip: text;
     -webkit-text-stroke-width: 0.5px;
-    -webkit-text-stroke-color: blue;
+    -webkit-text-stroke-color: #3C06EB;
     font-size: 23px;
     margin-bottom: 10px;
     text-align: center;
@@ -39,7 +39,7 @@
 }
 
 .benefitsHeading {
-    color: blue;
+    color: #3C06EB;
     font-size: 25px;
     font-weight: bold;
     margin-bottom: 15px;
@@ -70,7 +70,7 @@
 }
 
 .applicationHeading {
-    color: blue;
+    color: #3C06EB;
     font-size: 25px;
     font-weight: bold;
     margin-bottom: 15px;
@@ -96,20 +96,20 @@
 }
 
 .encouragement a {
-    color: orange;
+    color: #F36F27;
     text-decoration: none;
 }
 
 .encouragement a:visited{
-    color: orange;
+    color: #F36F27;
 }
 
 .encouragement a:link{
-    color: orange;
+    color: #F36F27;
 }
 
 .encouragement a:hover{
-    color: blue;
+    color: #3C06EB;
 }
 
 .questioning {
@@ -118,18 +118,18 @@
 }
 
 .questioning a {
-    color: orange;
+    color: #F36F27;
     text-decoration: none;
 }
 
 .questioning a:visited{
-    color: orange;
+    color: #F36F27;
 }
 
 .questioning a:link{
-    color: orange;
+    color: #F36F27;
 }
 
 .questioning a:hover{
-    color: blue;
+    color: #3C06EB;
 }

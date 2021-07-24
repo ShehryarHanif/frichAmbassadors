@@ -7,7 +7,7 @@ const AuthenticationPage = () => {
   return (
     <div className={classes.authenticationPageBackground}>
       <InitialLayout>
-        <AmbassadorAuthenticationForm />
+        <AmbassadorAuthenticationForm className={classes.authenticationForm}/>
       </InitialLayout>
     </div>
   );

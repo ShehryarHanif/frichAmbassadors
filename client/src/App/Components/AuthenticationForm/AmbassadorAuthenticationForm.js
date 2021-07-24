@@ -6,7 +6,9 @@ import axios from "axios";
 
 import { loginActions } from "../../store/loginStore";
 
-const AdminAuthenticationForm = () => {
+import classes from "./AmbassadorAuthenticationForm.module.css";
+
+const AdminAuthenticationForm = (props) => {
   const dispatch = useDispatch();
 
   const [ambassadorEmail, setAmbassadorEmail] = useState("");
@@ -48,7 +50,7 @@ const AdminAuthenticationForm = () => {
   };
 
   return (
-    <div>
+    <div className={`${classes.mainContainer} ${props.className}`}>
       <h1>Log In</h1>
 
       <form method="POST" onSubmit={ submissionHandler }>

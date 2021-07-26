@@ -38,9 +38,9 @@ const HomeInformation = () => {
                     <b>WE NEED YOU</b>
                 </div>
 
-                <div className={classes.encouragement}><Link href="/application">Become an ambassador today!</Link></div>
+                <div className={classes.encouragement}><Link to="/application">Become an ambassador today!</Link></div>
 
-                <div className={classes.questioning}>Not convinced or still need more info? <Link rel="noopener noreferrer" href="https://www.instagram.com/frichmoney" target="_blank">CLICK HERE</Link></div>
+                <div className={classes.questioning}>Not convinced or still need more info? <a rel="noopener noreferrer" href="https://www.instagram.com/frichmoney" target="_blank">CLICK HERE</a></div>
             </div>       
         </div>
     )

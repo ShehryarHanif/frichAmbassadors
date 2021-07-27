@@ -46,7 +46,7 @@ const AdminAuthenticationForm = (props) => {
 
         history.replace("/admin");
     })
-        .catch(() => alert("THERE WAS A PROBLEM. TRY AGAIN!"));
+        .catch(() => alert("OOPS! THERE WAS A PROBLEM. TRY AGAIN!"));
   };
 
   return (

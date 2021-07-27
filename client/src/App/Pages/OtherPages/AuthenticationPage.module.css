@@ -9,6 +9,19 @@
 
 .authenticationForm {
     position: relative;
-    left: 80%;
-    top: 12.5rem;
+    left: 75%;
+    top: 10rem;
+}
+
+@media (max-width: 800px){
+    .authenticationPageBackground {
+        background: white;
+    }
+    
+    .authenticationForm {
+        position: relative;
+        left: auto;
+        right: auto;
+        top: 10rem;
+    }
 }

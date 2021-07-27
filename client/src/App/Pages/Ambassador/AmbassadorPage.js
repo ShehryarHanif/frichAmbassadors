@@ -1,8 +1,15 @@
 import AmbassadorLayout from "../../Components/Layout/AmbassadorLayout";
+import AmbassadorInformation from "../../Components/InitialInformation/AmbassadorInformation";
+
+import classes from "./AmbassadorPage.module.css";
 
 const AmbassadorPage = () => {    
   return (
-    <AmbassadorLayout />
+    <div className={classes.homePageBackground}>
+      <AmbassadorLayout>
+        <AmbassadorInformation />
+      </AmbassadorLayout>
+    </div>
   );
 }
 

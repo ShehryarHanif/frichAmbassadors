@@ -59,8 +59,6 @@ function AmbassadorUsersPage(){
   const submissionHandler = (event) => {
     event.preventDefault();
 
-    console.log(ambassador);
-
     const formData = {
       "user_name": newUserName,
       "user_email": newUserEmail,
@@ -79,8 +77,6 @@ function AmbassadorUsersPage(){
         await getData();
         await getNumber();
         await getVerifiedNumber();
-
-        console.log(users, numberOfUsers, verifiedNumberOfUsers);
 
         setNewUserName("");
         setNewUserEmail("");

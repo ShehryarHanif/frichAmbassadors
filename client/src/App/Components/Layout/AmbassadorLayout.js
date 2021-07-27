@@ -5,11 +5,11 @@ const AmbassadorLayout = (props) => {
     
     const requiredLinks = [
         {
-            "requiredText": "MONITOR USERS",
+            "requiredText": "USERS",
             "requiredPath": "/ambassador/users",
         },
         {
-            "requiredText": "CHECK NOTIFICATIONS",
+            "requiredText": "NOTIFICATIONS",
             "requiredPath": "/ambassador/notifications"
         }
     ]

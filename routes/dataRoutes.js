@@ -326,9 +326,9 @@ router.get("/ambassadors-info/:ambassadorIdentifier/verification-number", adminA
 router.post("/applicants/ambassador-creator/", adminAuthentication, (req, res) => {
     const insertQuery = `INSERT INTO ambassadors SET ?;`;
 
-    const setPassword = req.body.applicant_first_name.substring(0, 3) + req.body.applicant_last_name.substring(0, 3) + String(Math.floor(Math.random() * 100000));
+    const setPassword = req.body.applicant_first_name.substring(0, 2) + req.body.applicant_last_name.substring(0, 2) + String(Math.floor(Math.random() * 10000000));
 
-    console.log(setPassword, req.body.applicant_first_name.substring(0, 3), req.body.applicant_last_name.substring(0, 3));
+    console.log(setPassword, req.body.applicant_first_name.substring(0, 2), req.body.applicant_last_name.substring(0, 3));
 
     const saltRounds = 10;
 

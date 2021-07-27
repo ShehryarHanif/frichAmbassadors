@@ -31,7 +31,7 @@ const LogoutButton = () => {
 
     if(loginStatus){
         return (
-        <button onClick={logoutHandler} className={classes.button}>LOG OUT</button>
+            <button onClick={logoutHandler} className={classes.button}>LOG OUT</button>
         );
     } else{
         return null;

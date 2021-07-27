@@ -7,7 +7,7 @@ const AdminAuthenticationPage = () => {
   return (
     <div className={classes.authenticationPageBackground}>
       <SecretLayout>
-        <AdminAuthenticationForm />
+        <AdminAuthenticationForm className={classes.authenticationForm}/>
       </SecretLayout>
     </div>
   );

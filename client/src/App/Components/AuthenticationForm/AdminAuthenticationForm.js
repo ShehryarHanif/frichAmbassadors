@@ -49,24 +49,18 @@ const AdminAuthenticationForm = (props) => {
         .catch(() => alert("OOPS! THERE WAS A PROBLEM. TRY AGAIN!"));
   };
 
-  return (
+   return (
     <div className={`${classes.mainContainer} ${props.className}`}>
-      <h1>Log In</h1>
+      <div className={classes.mainHeading}>
+        ADMIN LOG-IN
+      </div>
 
       <form method="POST" onSubmit={ submissionHandler }>
-        <div>
-          <label htmlFor="email">Your Email</label>
-          <input type="email" id="email" required onChange={emailChangeHandler} />
-        </div>
+        <input className={classes.inputBox} type="email" id="email" placeholder="Your Email" required onChange={emailChangeHandler} />
 
-        <div>
-          <label htmlFor="password">Your Password</label>
-          <input type="password" id="password" required onChange={passwordChangeHandler} />
-        </div>
+        <input className={classes.inputBox} type="password" id="password" placeholder="Your Password" required onChange={passwordChangeHandler} />
 
-        <div>
-          <button type="submit">Log In</button>
-        </div>
+        <input className={classes.submission} type="submit" value="LOG IN" />
       </form>
     </div>
   );

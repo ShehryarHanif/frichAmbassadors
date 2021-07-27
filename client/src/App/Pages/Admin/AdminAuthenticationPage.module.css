@@ -1,8 +1,27 @@
-.authenticationPageBackground{
+.authenticationPageBackground {
     background: url("../../../assets/editedAuthenticationPageBackground.png");
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+}
+
+.authenticationForm {
+    position: relative;
+    left: 75%;
+    top: 10rem;
+}
+
+@media (max-width: 800px){
+    .authenticationPageBackground {
+        background: white;
+    }
+    
+    .authenticationForm {
+        position: relative;
+        left: auto;
+        right: auto;
+        top: 10rem;
+    }
 }

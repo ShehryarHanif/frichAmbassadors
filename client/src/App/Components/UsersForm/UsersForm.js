@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import axios from "axios";
 
+import classes from "./UsersForm.module.css"; 
+
 const UsersForm = (props) => {    
     const [newUserName, setNewUserName] = useState("");
     const [newUserEmail, setNewUserEmail] = useState("");
@@ -43,15 +45,13 @@ const UsersForm = (props) => {
     };
   
     return (
-        <div>
+        <div className={classes.mainContainer}>
             <form method="POST" onSubmit={ submissionHandler }>
-                <label>Name</label>
-                <input type="text" value={ newUserName } onChange={ nameChangeHandler } />
+                <input className={classes.inputBox} type="text" placeholder="NAME" value={ newUserName } onChange={ nameChangeHandler } />
         
-                <label>Email</label>
-                <input type="email" value={ newUserEmail } onChange={ emailChangeHandler } />
+                <input className={classes.inputBox} type="email" placeholder="EMAIL" value={ newUserEmail } onChange={ emailChangeHandler } />
         
-                <button type="submit">Add User</button>
+                <input className={classes.submission} type="submit" value="ADD USER" />
             </form>
         </div>
     );

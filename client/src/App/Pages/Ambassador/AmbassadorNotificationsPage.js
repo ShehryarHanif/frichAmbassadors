@@ -1,41 +1,15 @@
-import { useState, useEffect } from "react";
-
-import axios from "axios";
-
 import AmbassadorLayout from "../../Components/Layout/AmbassadorLayout";
+import AmbassadorNotificationsTable from "../../Components/NotificationsTable/AmbassadorNotificationsTable";
 
-function AmbassadorNotificationsPage(){    
-  const [notifications, setNotifications] = useState([]);
+import classes from "./AmbassadorNotificationsPage.module.css"
 
-  const getData = () => {
-    axios.get("/api/ambassador-notifications")
-      .then((response) => setNotifications(response.data))
-        .catch((err) => console.log(err));
-  };
-
-  useEffect(getData, []);
-  
+const AmbassadorNotificationsPage = () => {    
   return (
-    <AmbassadorLayout>  
-      <table>
-      <tr>
-          <th>Subject</th>
-          <th>Content</th>
-          <th>Time</th>
-          <th></th>
-      </tr>
-
-      { notifications.map((notification) => {
-          return (
-          <tr key={ notification["notification_id"] }>
-              <td>{ notification["notification_subject"] }</td>
-              <td>{ notification["notification_content"] }</td>
-              <td>{ notification["notification_created_at"] }</td>
-          </tr>
-          )
-      }) }
-      </table>
-    </AmbassadorLayout>
+    <div className={classes.notificationsPageBackground}>
+        <AmbassadorLayout>  
+          <AmbassadorNotificationsTable />
+        </AmbassadorLayout>
+    </div>
   );
 }
 

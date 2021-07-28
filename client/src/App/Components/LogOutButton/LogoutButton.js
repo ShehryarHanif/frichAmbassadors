@@ -10,7 +10,7 @@ import classes from "./LogoutButton.module.css";
 const LogoutButton = () => {
     const dispatch = useDispatch();
 
-    const loginStatus = useSelector((state) => state.login.loginStatus);
+    const loginStatus = useSelector((state) => state.loginStatus);
 
     const history = useHistory();
 
@@ -25,7 +25,7 @@ const LogoutButton = () => {
               throw new Error("There was a problem")
           }
         }).catch((err) => {
-              console.log(err);
+          console.log(err);
         });
     }
 

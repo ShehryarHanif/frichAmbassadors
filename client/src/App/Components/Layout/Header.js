@@ -1,4 +1,4 @@
-import LogoutButton from "../Buttons/LogoutButton";
+import LogoutButton from "../LogOutButton/LogoutButton";
 
 import frichLogo from "../../../assets/frichLogo.png";
 

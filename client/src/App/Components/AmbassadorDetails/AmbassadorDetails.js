@@ -1,9 +1,24 @@
+import classes from "./AmbassadorDetails.module.css";
+
 const AmbassadorDetails = (props) => {      
     return (
-        <div>
-            <p>Referral Code: {props.ambassador["ambassador_referral_code"]}</p>
-            <p>Number of Users: {props.numberOfUsers}</p>
-            <p>Number of Verified Users: {props.verifiedNumberOfUsers}</p>
+        <div className={classes.mainContainer}>
+            <div className={classes.ambassadorInformation}>AMBASSADOR INFORMATION</div>
+
+            <div className={classes.singleValue}>
+                <div className={classes.valueName}>REFERRAL CODE</div>
+                <div className={classes.actualValue}>{props.ambassador["ambassador_referral_code"]}</div>
+            </div>
+            
+            <div className={classes.singleValue}>
+                <div className={classes.valueName}>NUMBER OF USERS</div>
+                <div className={classes.actualValue}>{props.numberOfUsers}</div>
+            </div>
+            
+            <div className={classes.singleValue}>
+                <div className={classes.valueName}>NUMBER OF VERIFIED USERS</div>
+                <div className={classes.actualValue}>{props.verifiedNumberOfUsers}</div>
+            </div>
         </div>
     );
 }

@@ -61,9 +61,9 @@ const AmbassadorUsersPage = () => {
   return (
     <div className={classes.usersPageBackground}>
       <AmbassadorLayout>
-        <UsersForm ambassador={ambassador} getUsers={getUsers} getNumber={getNumber} getVerifiedNumber={getVerifiedNumber} />
-
         <AmbassadorDetails ambassador={ambassador} numberOfUsers={numberOfUsers} verifiedNumberOfUsers={verifiedNumberOfUsers} />
+
+        <UsersForm ambassador={ambassador} getUsers={getUsers} getNumber={getNumber} getVerifiedNumber={getVerifiedNumber} />
 
         <AmbassadorUsersTable users={users} />
       </AmbassadorLayout>

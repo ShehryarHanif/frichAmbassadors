@@ -41,15 +41,15 @@ const UsersForm = (props) => {
           setNewUserName("");
           setNewUserEmail("");
         })
-          .catch((error) => console.log(error));
+          .catch((error) => alert("OOPS! THERE WAS A PROBLEM. TRY AGAIN!"));
     };
   
     return (
         <div className={classes.mainContainer}>
             <form method="POST" onSubmit={ submissionHandler }>
-                <input className={classes.inputBox} type="text" placeholder="NAME" value={ newUserName } onChange={ nameChangeHandler } />
+                <input className={classes.inputBox} type="text" placeholder="NAME" minLength="2" required value={ newUserName } onChange={ nameChangeHandler } />
         
-                <input className={classes.inputBox} type="email" placeholder="EMAIL" value={ newUserEmail } onChange={ emailChangeHandler } />
+                <input className={classes.inputBox} type="email" placeholder="EMAIL" required value={ newUserEmail } onChange={ emailChangeHandler } />
         
                 <input className={classes.submission} type="submit" value="ADD NEW USER" />
             </form>

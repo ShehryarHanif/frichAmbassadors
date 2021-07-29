@@ -1,6 +1,8 @@
+import classes from "./UsersTablePlaceholder.module.css";
+
 const UsersTablePlaceholder = () => {
     return (
-      <div>There are no users right now.</div>
+      <div className={classes.mainContainer}></div>
     );
 };
   

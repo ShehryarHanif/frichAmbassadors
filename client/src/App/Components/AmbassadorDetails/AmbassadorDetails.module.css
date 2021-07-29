@@ -1,17 +1,18 @@
 .mainContainer {
-    border: 3px solid #3C06EB;
-    background-color: #D7F684;
+    /* border: 3px solid #3C06EB; */
+    /* background-color: #D7F684; */
     font-family: "Montserrat", sans-serif;
     width: 90%;
     text-align: center;
     margin-top: 2.75rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
     margin-left: auto;
     margin-right: auto;
     padding: 3%;
 }
 
 .ambassadorInformation {
+    color: #3C06EB;
     color: #3C06EB;
     font-weight: bold;
     text-decoration: underline;
@@ -31,5 +32,7 @@
 
 .actualValue {
     text-shadow: 1px 3px 32px #FF6E00;
+    /* color: #FF6E00; */
+    color: #3C06EB;
     font-size: 1.05rem;
 }

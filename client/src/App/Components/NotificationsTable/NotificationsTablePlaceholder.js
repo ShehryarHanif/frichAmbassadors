@@ -1,6 +1,8 @@
+import classes from "./NotificationsTablePlaceholder.module.css";
+
 const NotificationsTablePlaceholder = () => {
   return (
-    <div>There are no notifications right now.</div>
+          <div className={classes.mainContainer}>THERE ARE NO NOTIFICATIONS!</div>
   );
 }
 

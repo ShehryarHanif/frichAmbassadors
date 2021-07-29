@@ -1,12 +1,11 @@
 .mainContainer {
-    border: 3px solid #3C06EB;
-    background-color: #D7F684;
+    background-color: white;
     font-family: "Montserrat", sans-serif;
-    width: 100%;
+    width: 70%;
     text-align: center;
     padding: 5%;
-    margin-top: 2.75rem;
-    margin-bottom: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
     margin-left: auto;
     margin-right: auto;
 }
@@ -28,11 +27,16 @@ input::placeholder {
 .submission {
     grid-area: submission;
     border: 2px solid #FF6E00;
-    background-color: #4300F7;
+    background-color: WHITE;
     margin: 10px auto;
     width: 50%;
     color: #FF6E00;
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
+}
+
+.submission:hover{
+    border: 2px solid #4300F7;
+    color: #4300F7;
 }

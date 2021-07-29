@@ -51,7 +51,7 @@ const UsersForm = (props) => {
         
                 <input className={classes.inputBox} type="email" placeholder="EMAIL" value={ newUserEmail } onChange={ emailChangeHandler } />
         
-                <input className={classes.submission} type="submit" value="ADD USER" />
+                <input className={classes.submission} type="submit" value="ADD NEW USER" />
             </form>
         </div>
     );

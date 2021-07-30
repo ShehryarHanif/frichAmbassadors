@@ -6,3 +6,9 @@
     -o-background-size: cover;
     background-size: cover;
 }
+
+@media (max-width: 900px){
+    .notificationsPageBackground {
+        background: white;
+    }
+}

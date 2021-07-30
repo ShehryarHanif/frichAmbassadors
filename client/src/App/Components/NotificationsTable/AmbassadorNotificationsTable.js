@@ -4,7 +4,7 @@ import axios from "axios";
 
 import NotificationsTablePlaceholder from "./NotificationsTablePlaceholder";
 
-import classes from "./AmbassadorNotificationsTable";
+import classes from "./AmbassadorNotificationsTable.module.css";
 
 const AmbassadorNotificationsTable = () => {
   const [notifications, setNotifications] = useState([
@@ -41,8 +41,8 @@ const AmbassadorNotificationsTable = () => {
   if(notifications.length > 0){        
     return (
         <div className={classes.mainContainer}>  
-            <table>
-                <tr>
+            <table className={classes.notificationsTable}>
+                <tr className={classes.notificationRow}>
                     <th>SUBJECT</th>
                     <th>CONTENT</th>
                     <th>TIME</th>
@@ -50,11 +50,13 @@ const AmbassadorNotificationsTable = () => {
                 </tr>
 
                 {notifications.map((notification) => {
+                    // console.log(Object.getPrototypeOf(SimpleDateFormat("dd-MMM-yy").parse((notification["notification_created_at"]))));
+
                     return (
-                    <tr key={notification["notification_id"]}>
+                    <tr key={notification["notification_id"]} className={`${classes.notificationRow} ${classes.regularCell}`}>
                         <td>{notification["notification_subject"]}</td>
                         <td>{notification["notification_content"]}</td>
-                        <td>{notification["notification_created_at"]}</td>
+                        <td>{Date(notification["notification_created_at"])}</td>
                     </tr>
                     )
                 }) }

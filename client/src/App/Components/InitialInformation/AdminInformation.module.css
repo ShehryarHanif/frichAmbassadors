@@ -1,0 +1,58 @@
+.totalContainer{
+    border: 3px solid #4300F7;
+    background-color: #D7F684;
+    font-family: "Roboto", sans-serif;
+    margin-top: 4rem;
+    margin-bottom: 20rem;
+}
+
+.userMessage {
+    text-align: center;
+    border: 2px solid #FF6E00;
+    margin:20px;
+    margin-bottom: 30px;
+    padding: 20px;
+    font-family: "Roboto", sans-serif;
+    font-size: 2rem;
+    background-color: #4300F7;
+    color: #FF6E00;
+}
+
+.userInformation{
+    display: table;
+    position: center;
+    border: 2px solid #4300F7;
+    padding: 20px;
+    margin-right: auto;
+    margin-left: auto; 
+    margin-bottom: 30px;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.5rem;
+    background-color: #FF6E00;
+    color: #4300F7;
+}
+
+.links {
+    font-size: 1.5rem;
+    color: #4300F7;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.links a {
+    color: #FF6E00;
+    text-decoration: none;
+}
+
+.links a:visited{
+    color: #FF6E00;
+}
+
+.links a:link{
+    color: #FF6E00;
+}
+
+.links a:hover{
+    color: #4300F7;
+}

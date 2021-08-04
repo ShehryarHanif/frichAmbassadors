@@ -77,6 +77,7 @@ const AdminApplicantPage = (props) => {
       })
         .then((response) => {
             acceptanceEmailSender(response.data["setPassword"]);
+
             acceptanceStateHandler();
           }
           ).catch((error) => console.log(error)); 
@@ -96,7 +97,7 @@ const AdminApplicantPage = (props) => {
       <AdminLayout>
         <ApplicantDetails applicant={applicant} />
 
-        {!tentativeAcceptance ? <ApplicantStatus restoreHandler={restoreHandler} rejectHandler={rejectHandler} acceptHandler={acceptHandler} emailHandler={emailHandler}/> : <ApplicantStatusClarifier acceptHandler={acceptHandler} acceptanceStateHandler={acceptanceStateHandler}/>}
+        {!tentativeAcceptance ? <ApplicantStatus currentStatus={applicant["applicant_registration_status"] || "aemailed"} restoreHandler={restoreHandler} rejectHandler={rejectHandler} acceptHandler={acceptHandler} emailHandler={emailHandler}/> : <ApplicantStatusClarifier acceptHandler={acceptHandler} acceptanceStateHandler={acceptanceStateHandler}/>}
       </AdminLayout>
     </div>
   );

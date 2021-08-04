@@ -3,10 +3,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import AdminLayout from "../../Components/Layout/AdminLayout";
+import ApplicantDetails from "../../Components/ApplicantDetails/ApplicantDetails";
+import ApplicantStatus from "../../Components/ApplicantStatus/ApplicantStatus";
+import ApplicantStatusClarifier from "../../Components/ApplicantStatus/ApplicantStatusClarifier";
 
-function AdminApplicantPage(props){    
+import classes from "./AdminApplicantPage.module.css";
+
+const AdminApplicantPage = (props) => {    
   const [applicant, setApplicant] = useState({});
-
   const [tentativeAcceptance, setTentativeAcceptance] = useState(false);
 
   const acceptedMessageCreator = (firstName, newPassword) => {
@@ -40,7 +44,7 @@ function AdminApplicantPage(props){
       .then(() => {
         getApplicant();
       })
-        .catch((error) => console.log(error)); 
+        .catch((error) => alert(error)); 
   };
 
   const rejectHandler = () => {
@@ -53,11 +57,13 @@ function AdminApplicantPage(props){
 
   const emailHandler = () => {
     window.open(`mailto:${applicant["applicant_email"]}?subject=Frich%20Ambassador%20Interview&body=${pendingMessageCreator(applicant["applicant_first_name"])}`);
+
     statusChanger("emailed");
   };
 
   const acceptanceEmailSender = (newPassword) => {
     window.open(`mailto:${applicant["applicant_email"]}?subject=Welcome%20To%20Frich%20Ambassadors%20&body=${acceptedMessageCreator(applicant["applicant_first_name"], newPassword)}`);
+
     statusChanger("accepted");
   }
 
@@ -86,49 +92,13 @@ function AdminApplicantPage(props){
   };
 
   return (
-    <AdminLayout>
-      <table>
-        <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Email</th>
-          <th>Referral Code</th>
-          <th>Registration Status</th>
-          <th>University</th>
-          <th>University Location</th>
-          <th>Instagram</th>
-          <th>TikTok</th>
-          <th>Answer 1</th>
-          <th>Answer 2</th>
-          <th>Application Time</th>
-        </tr>
+    <div className={classes.adminApplicantPageBackground}>
+      <AdminLayout>
+        <ApplicantDetails applicant={applicant} />
 
-        <tr key={ applicant["applicant_id"] }>
-          <td>{ applicant["applicant_first_name"] }</td>
-          <td>{ applicant["applicant_last_name"] }</td>
-          <td>{ applicant["applicant_email"] }</td>
-          <td>{ applicant["applicant_referral_code"] }</td>
-          <td>{ applicant["applicant_registration_status"] }</td>
-          <td>{ applicant["applicant_university"] }</td>
-          <td>{ applicant["applicant_university_location"] }</td>
-          <td>{ applicant["applicant_instagram"] }</td>
-          <td>{ applicant["applicant_tiktok"] }</td>
-          <td>{ applicant["applicant_question_one"] }</td>
-          <td>{ applicant["applicant_question_two"] }</td>
-          <td>{ applicant["applicant_created_at"] }</td>
-        </tr>
-      </table>
-
-      <button onClick={restoreHandler}>Restore Original Status</button>
-      <button onClick={rejectHandler}>Reject</button>
-      <button onClick={emailHandler}>Email</button>
-      <button onClick={acceptanceStateHandler}>Accept</button>
-      {tentativeAcceptance && <p>Are you sure?</p>}
-      {tentativeAcceptance && <button onClick={acceptHandler}>Yes</button>}
-      {tentativeAcceptance && <button onClick={acceptanceStateHandler}>No</button>}
-
-    </AdminLayout>
-
+        {!tentativeAcceptance ? <ApplicantStatus restoreHandler={restoreHandler} rejectHandler={rejectHandler} acceptHandler={acceptHandler} emailHandler={emailHandler}/> : <ApplicantStatusClarifier acceptHandler={acceptHandler} acceptanceStateHandler={acceptanceStateHandler}/>}
+      </AdminLayout>
+    </div>
   );
 }
 

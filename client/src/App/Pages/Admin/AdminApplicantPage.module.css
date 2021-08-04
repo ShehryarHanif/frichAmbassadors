@@ -1,5 +1,5 @@
-.notificationsPageBackground{
-    background: url("../../../assets/notificationsPageBackground.png");
+.adminApplicantPageBackground{
+    background: url("../../../assets/applicationFormPageBackground.png");
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -8,7 +8,7 @@
 }
 
 @media (max-width: 1200px){
-    .notificationsPageBackground {
+    .adminApplicantPageBackground {
         background: white;
     }
 }

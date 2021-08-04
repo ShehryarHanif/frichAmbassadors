@@ -37,15 +37,19 @@ const NotificationsForm = () => {
   };
 
   return (
-    <form method="POST" onSubmit={submissionHandler}>
-        <label>Subject</label>
-        <input type="text" value={newNotificationSubject} onChange={notificationSubjectChangeHandler} />
-
-        <label>Content</label>
-        <input type="text" value={newNotificationContent} onChange={notificationContentChangeHandler} />
-
-        <button type="submit">Send Notification</button>
-    </form>
+      <div className={classes.mainContainer}>
+        <div className={classes.mainHeading}>
+          CREATE NEW NOTIFICATION
+        </div>
+  
+        <form method="POST" onSubmit={submissionHandler}>
+          <input className={classes.inputBox} type="text" value={newNotificationSubject} placeholder="SUBJECT" onChange={notificationSubjectChangeHandler} />
+  
+          <input className={classes.inputBox} type="text" value={newNotificationContent} placeholder="CONTENT" required onChange={notificationContentChangeHandler} />
+  
+          <input className={classes.submission} type="submit" value="SEND NOTIFICATION" />
+        </form>
+      </div>
   );
 };
 

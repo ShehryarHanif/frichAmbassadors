@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import axios from "axios";
 
-import AdminLayout from "../../Components/Layout/AmbassadorLayout";
+import AdminLayout from "../../Components/Layout/AdminLayout";
 import NotificationsForm from "../../Components/NotificationsForm/NotificationsForm";
 import AdminNotificationsTable from "../../Components/NotificationsTable/AdminNotificationsTable";
 

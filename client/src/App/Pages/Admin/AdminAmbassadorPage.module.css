@@ -1,8 +1,12 @@
-.adminAmbassadorPageBackground {
+/* .adminAmbassadorPageBackground {
     background: url("../../../assets/usersPageBackground.png");
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+} */
+
+.widthOverride {
+    max-width: 100rem;
 }

@@ -21,25 +21,25 @@ const AdminAmbassadorPage = (props) => {
 
         setAmbassador(response.data)
       } )
-        .catch((err) => console.log(err));
+        .catch((err) => alert(err));
   };
 
   const getUsers = () => {
     axios.get(`/api/ambassadors/${ambassador["ambassador_id"]}`)
       .then((response) => {setUsers(response.data)})
-        .catch((err) => console.log(err));
+        .catch((err) => alert(err));
   };
   
   const getNumber = () => {
     axios.get(`/api/ambassadors-info/${ambassador["ambassador_id"] }/number`)
       .then((response) => {setNumberOfUsers(response.data["number_of_users"])})
-        .catch((err) => console.log(err));
+        .catch((err) => alert(err));
   };
   
   const getVerifiedNumber = () => {
     axios.get(`/api/ambassadors-info/${ambassador["ambassador_id"]}/verification-number`)
       .then((response) => {setVerifiedNumberOfUsers(response.data["verified_number_of_users"])})
-        .catch((err) => console.log(err));
+        .catch((err) => alert(err));
   };
 
   useEffect(() => {
@@ -72,7 +72,7 @@ const AdminAmbassadorPage = (props) => {
 
       getUsers();
     })
-      .catch((error) => console.log(error)); 
+      .catch((error) => alert(error)); 
   };
 
   const rejectHandler = (userId) => {
@@ -89,7 +89,7 @@ const AdminAmbassadorPage = (props) => {
 
   return (
     <div className={classes.adminAmbassadorPageBackground} >
-      <AdminLayout>
+      <AdminLayout widthOverride={classes.widthOverride}>
         <AmbassadorInformation ambassador={ambassador} numberOfUsers={numberOfUsers} verifiedNumberOfUsers={verifiedNumberOfUsers} submissionHandler={submissionHandler} />
 
         <AdminUsersTable users={users} rejectHandler={rejectHandler} restoreHandler={restoreHandler} acceptHandler={acceptHandler}/>

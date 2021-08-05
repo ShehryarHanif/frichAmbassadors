@@ -19,7 +19,7 @@ const AdminLayout = (props) => {
     ]
 
     return (
-        <Layout logoLink={mainLink} passedLinks={requiredLinks}>
+        <Layout logoLink={mainLink} passedLinks={requiredLinks} widthOverride={props.widthOverride || null}>
             {props.children}
         </Layout>
     );

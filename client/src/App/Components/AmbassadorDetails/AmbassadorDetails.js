@@ -16,7 +16,7 @@ const AmbassadorDetails = (props) => {
             </div>
             
             <div className={classes.singleValue}>
-                <div className={classes.valueName}>NUMBER OF VERIFIED USERS</div>
+                <div className={classes.valueName}>NUMBER OF ACCEPTED USERS</div>
                 <div className={classes.actualValue}>{props.verifiedNumberOfUsers}</div>
             </div>
         </div>

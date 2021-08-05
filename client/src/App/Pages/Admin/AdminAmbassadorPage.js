@@ -3,8 +3,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import AdminLayout from "../../Components/Layout/AdminLayout";
+import AdminUsersTable from "../../Components/UsersTable/AdminUsersTable";
+import AmbassadorInformation from "../../Components/AmbassadorInformation/AmbassadorInformation";
 
-function AdminAmbassadorPage(props){    
+import classes from "./AdminAmbassadorPage.module.css";
+
+const AdminAmbassadorPage = (props) => {    
   const [ambassador, setAmbassador] = useState({});
   const [users, setUsers] = useState([]);
   const [numberOfUsers, setNumberOfUsers] = useState(null);
@@ -65,6 +69,7 @@ function AdminAmbassadorPage(props){
   })
     .then(() => {
       getVerifiedNumber();
+
       getUsers();
     })
       .catch((error) => console.log(error)); 
@@ -82,65 +87,14 @@ function AdminAmbassadorPage(props){
     statusChanger(userId, "accepted");
   };
 
-    return (
-    <AdminLayout>
-      <table>
-        <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Email</th>
-          <th>Referral Code</th>
-          <th>University</th>
-          <th>State</th>
-          <th>Number of Users</th>
-          <th>Number of Verified Users</th>
-          <th>Tier</th>
-          <th>Instagram</th>
-          <th>TikTok</th>
-          <th></th>
-        </tr>
+  return (
+    <div className={classes.adminAmbassadorPageBackground} >
+      <AdminLayout>
+        <AmbassadorInformation ambassador={ambassador} numberOfUsers={numberOfUsers} verifiedNumberOfUsers={verifiedNumberOfUsers} submissionHandler={submissionHandler} />
 
-        <tr key={ ambassador["ambassador_id"] }>
-          <td>{ ambassador["ambassador_first_name"] }</td>
-          <td>{ ambassador["ambassador_last_name"] }</td>
-          <td>{ ambassador["ambassador_email"] }</td>
-          <td>{ ambassador["ambassador_referral_code"] }</td>
-          <td>{ ambassador["ambassador_university"] }</td>
-          <td>{ ambassador["ambassador_university_location"] }</td>
-          <td>{ numberOfUsers }</td>
-          <td>{ verifiedNumberOfUsers }</td>
-          <td>{ ambassador["ambassador_tier"] }</td>
-          <td>{ ambassador["ambassador_instagram"] }</td>
-          <td>{ ambassador["ambassador_tiktok"] }</td>
-          <td><button onClick={submissionHandler.bind(null, ambassador["ambassador_applicant_id"])} >Go To Application</button></td>
-        </tr>
-      </table>
-
-      <table>
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Verification Status</th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-
-        { users.map((user) => {
-          return (
-            <tr key={ user["user_id"] }>
-              <td>{ user["user_name"] }</td>
-              <td>{ user["user_email"] }</td>
-              <td>{user["user_verification_status"]}</td>
-              <td><button onClick={restoreHandler.bind(null, user["user_id"])} >Restore</button></td>
-              <td><button onClick={rejectHandler.bind(null, user["user_id"])} >Reject</button></td>
-              <td><button onClick={acceptHandler.bind(null, user["user_id"])} >Accept</button></td>
-            </tr>
-          )
-        }) }
-      </table>
-    </AdminLayout>
-
+        <AdminUsersTable users={users} rejectHandler={rejectHandler} restoreHandler={restoreHandler} acceptHandler={acceptHandler}/>
+      </AdminLayout>
+    </div>
   );
 }
 

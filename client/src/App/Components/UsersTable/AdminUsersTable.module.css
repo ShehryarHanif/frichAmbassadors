@@ -1,0 +1,83 @@
+.mainContainer {
+    background: white;
+    font-family: "Montserrat", sans-serif;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3%;
+    color: #4300F7;
+}
+  
+.userRow {
+    padding: 15px 0;
+    text-align: center;
+}
+
+.usersTable {
+    width: 100%;
+}
+
+.usersTable td, .usersTable th, .usersTable .usersTable{
+    overflow: hidden;
+    white-space: nowrap;
+    padding:5px;
+    width: 20%;
+    padding: 10px;
+    text-align: center;
+}
+
+.regularCell{
+    clear: both;
+    border-top: #4300F7 2px solid;
+    border-bottom: none;
+}
+
+.unverifiedColor {
+    color: #4300F7;
+}
+
+.rejectedColor {
+    color: #FF6E00;
+}
+
+.acceptedColor {
+    color: #B4D852;
+}
+
+.rejectButton {
+    border: #FF6E00 2px solid;
+    color: #FF6E00;
+    background: white;
+}
+
+.rejectButton:hover {
+    border: white 2px solid;
+    color: white;
+    background: #FF6E00;
+}
+
+.restoreButton {
+    border: black 2px solid;
+    color: black;
+    background: white;
+}
+
+.restoreButton:hover {
+    border: white 2px solid;
+    color: white;
+    background: black;
+}
+
+.acceptButton {
+    border: #B4D852 2px solid;
+    color: #B4D852;
+    background: white;
+}
+
+.acceptButton:hover {
+    border: white 2px solid;
+    color: white;
+    background: #B4D852;
+}

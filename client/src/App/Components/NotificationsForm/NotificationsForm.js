@@ -4,7 +4,7 @@ import axios from "axios";
 
 import classes from "./NotificationsForm.module.css";
 
-const NotificationsForm = () => {
+const NotificationsForm = (props) => {
   const [newNotificationSubject, setNewNotificationSubject] = useState("");
   const [newNotificationContent, setNewNotificationContent] = useState("");
 
@@ -29,8 +29,9 @@ const NotificationsForm = () => {
       headers: {"Content-Type": "application/json"}
     })
       .then(() => {
-        this.getData();
+        props.getData();
 
+        setNewNotificationSubject("");
         setNewNotificationContent("");
       })
         .catch((error) => alert(error));

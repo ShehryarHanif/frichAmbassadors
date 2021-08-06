@@ -97,7 +97,7 @@ const AdminApplicantPage = (props) => {
       <AdminLayout>
         <ApplicantDetails applicant={applicant} />
 
-        {!tentativeAcceptance ? <ApplicantStatus currentStatus={applicant["applicant_registration_status"] || "aemailed"} restoreHandler={restoreHandler} rejectHandler={rejectHandler} acceptHandler={acceptHandler} emailHandler={emailHandler}/> : <ApplicantStatusClarifier acceptHandler={acceptHandler} acceptanceStateHandler={acceptanceStateHandler}/>}
+        {!tentativeAcceptance ? <ApplicantStatus currentStatus={applicant["applicant_registration_status"] || "emailed"} restoreHandler={restoreHandler} rejectHandler={rejectHandler} acceptanceStateHandler={acceptanceStateHandler} emailHandler={emailHandler}/> : <ApplicantStatusClarifier acceptHandler={acceptHandler} acceptanceStateHandler={acceptanceStateHandler}/>}
       </AdminLayout>
     </div>
   );

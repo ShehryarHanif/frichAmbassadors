@@ -17,7 +17,7 @@ const AdminNotificationsTable = (props) => {
       .then(() => {
         props.getData();
       })
-        .catch((error) => console.log(error));
+        .catch((error) => alert(error));
   };
   
   if(props.notifications.length > 0){        

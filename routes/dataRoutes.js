@@ -240,7 +240,7 @@ router.post("/delete-notification/:notificationIdentifier", adminAuthentication,
 });
 
 router.get("/ambassadors-info", adminAuthentication, (req, res) => {
-    const queryString = "SELECT ambassador_id, ambassador_first_name, ambassador_last_name, ambassador_email, ambassador_referral_code, COUNT(users.user_id) AS number_of_users, ambassador_tier FROM ambassadors LEFT JOIN users ON ambassadors.ambassador_id = users.user_ambassador_id GROUP BY ambassadors.ambassador_id ORDER BY ambassadors.ambassador_created_at DESC;";
+    const queryString = "SELECT ambassador_id, ambassador_first_name, ambassador_last_name, ambassador_email, ambassador_referral_code, COUNT(users.user_id) AS number_of_users, COUNT(CASE WHEN users.user_verification_status = 'accepted' THEN 1 ELSE NULL END) AS verified_number_of_users, ambassador_tier FROM ambassadors LEFT JOIN users ON ambassadors.ambassador_id = users.user_ambassador_id GROUP BY ambassadors.ambassador_id ORDER BY ambassadors.ambassador_created_at DESC;";
 
     connection.query(queryString, function(err, results){
         if (err){

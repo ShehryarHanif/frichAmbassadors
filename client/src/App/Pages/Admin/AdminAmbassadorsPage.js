@@ -3,50 +3,27 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import AdminLayout from "../../Components/Layout/AdminLayout";
+import AmbassadorsTableOverlay from "../../Components/AmbassadorsTableOverlay/AmbassadorsTableOverlay";
 
-function AdminAmbassadorsPage(props){    
+import classes from "./AdminAmbassadorsPage.module.css";
+
+const AdminAmbassadorsPage = (props) => {    
   const [ambassadors, setAmbassadors] = useState([]);
 
-  const getData = () => {
+  const getAmbassadors = () => {
     axios.get("/api/ambassadors-info/")
       .then((response) => setAmbassadors(response.data))
-        .catch((err) => console.log(err));
+        .catch((err) => alert(err));
   };
 
-  useEffect(getData, []);
-
-  const submissionHandler = (passedElement) => {
-    props.history.push(`/admin/ambassadors/${passedElement}`);
-  };
+  useEffect(getAmbassadors, []);
 
   return (
-    <AdminLayout>
-        <table>
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Referral Code</th>
-                <th>Number of Users</th>
-                <th>Tier</th>
-                <th></th>
-                </tr>
-
-                { ambassadors.map((ambassador) => {
-                return (
-                    <tr key={ ambassador["ambassador_id"] }>
-                    <td>{ ambassador["ambassador_first_name"] }</td>
-                    <td>{ ambassador["ambassador_last_name"] }</td>
-                    <td>{ ambassador["ambassador_email"] }</td>
-                    <td>{ ambassador["ambassador_referral_code"] }</td>
-                    <td>{ ambassador["number_of_users"] }</td>
-                    <td>{ambassador["ambassador_tier"]}</td>
-                    <td><button onClick={submissionHandler.bind(null, ambassador["ambassador_id"])} >View</button></td>
-                    </tr>
-                )
-                }) }
-      </table>
-    </AdminLayout>
+    <div className={classes.adminAmbassadorsPageBackground}>
+      <AdminLayout widthOverride={classes.widthOverride}>
+        <AmbassadorsTableOverlay ambassadors={ambassadors} history={props.history} />
+      </AdminLayout>
+    </div>
 
   );
 }

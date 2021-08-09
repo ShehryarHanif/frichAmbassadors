@@ -13,6 +13,7 @@ const AmbassadorInformation = (props) => {
             <th>STATE</th>
             <th>NUMBER OF USERS</th>
             <th>NUMBER OF ACCEPTED USERS</th>
+            <th>NUMBER OF PENDING USERS</th>
             {/* <th>Tier</th> */}
             <th>INSTAGRAM</th>
             <th>TIKTOK</th>
@@ -28,6 +29,7 @@ const AmbassadorInformation = (props) => {
             <td>{props.ambassador["ambassador_university_location"]}</td>
             <td>{props.numberOfUsers}</td>
             <td>{props.verifiedNumberOfUsers}</td>
+            <td>{props.pendingNumberOfUsers}</td>
             {/* <td>{props.ambassador["ambassador_tier"].toUpperCase()}</td> */}
             <td>{props.ambassador["ambassador_instagram"] || "—"}</td>
             <td>{props.ambassador["ambassador_tiktok"] || "—"}</td>

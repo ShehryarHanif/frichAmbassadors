@@ -14,8 +14,10 @@ const AmbassadorsTable = (props) => {
                 <th>EMAIL</th>
                 <th>REFERRAL CODE</th>
                 <th>NUMBER OF USERS</th>
-                <th>NUMBER OF VERIFIED USERS</th>
+                <th>NUMBER OF ACCEPTED USERS</th>
+                <th>NUMBER OF PENDING USERS</th>
                 {/* <th>TIER</th> */}
+                <th>ACCEPTANCE TIME</th>
                 <th>DETAILS</th>
                 </tr>
 
@@ -28,8 +30,10 @@ const AmbassadorsTable = (props) => {
                         <td>{ambassador["ambassador_referral_code"]}</td>
                         <td>{ambassador["number_of_users"]}</td>
                         <td>{ambassador["verified_number_of_users"]}</td>
+                        <td>{ambassador["pending_number_of_users"]}</td>
                         {/* <td>{ambassador["ambassador_tier"]}</td> */}
-                        <td><button onClick={submissionHandler.bind(ambassador["ambassador_id"])}>VIEW DETAILS</button></td>
+                        <td>{ambassador["ambassador_created_at"]}</td>
+                        <td><button onClick={submissionHandler.bind(null, ambassador["ambassador_id"])}>VIEW DETAILS</button></td>
                         </tr>
                     )
                 }) }

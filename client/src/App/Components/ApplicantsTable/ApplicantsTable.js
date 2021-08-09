@@ -23,8 +23,8 @@ const ApplicantsTable = (props) => {
               <td>{applicant["applicant_first_name"]}</td>
               <td>{applicant["applicant_last_name"]}</td>
               <td>{applicant["applicant_email"]}</td>
-              <td>{applicant["applicant_registration_status"]}</td>
-              <td>{Date(applicant["applicant_created_at"])}</td>
+              <td>{applicant["applicant_registration_status"].toUpperCase()}</td>
+              <td>{applicant["applicant_created_at"]}</td>
               <td><button onClick={submissionHandler.bind(null, applicant["applicant_id"])} >VIEW</button></td>
             </tr>
           )

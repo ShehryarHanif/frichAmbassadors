@@ -240,7 +240,7 @@ router.post("/delete-notification/:notificationIdentifier", adminAuthentication,
 });
 
 router.get("/ambassadors-info", adminAuthentication, (req, res) => {
-    const queryString = "SELECT ambassador_id, ambassador_first_name, ambassador_last_name, ambassador_email, ambassador_referral_code, COUNT(users.user_id) AS number_of_users, COUNT(CASE WHEN users.user_verification_status = 'accepted' THEN 1 ELSE NULL END) AS verified_number_of_users, ambassador_tier FROM ambassadors LEFT JOIN users ON ambassadors.ambassador_id = users.user_ambassador_id GROUP BY ambassadors.ambassador_id ORDER BY ambassadors.ambassador_created_at DESC;";
+    const queryString = "SELECT ambassador_id, ambassador_first_name, ambassador_last_name, ambassador_email, ambassador_referral_code, COUNT(users.user_id) AS number_of_users, COUNT(CASE WHEN users.user_verification_status = 'accepted' THEN 1 ELSE NULL END) AS verified_number_of_users, COUNT(CASE WHEN users.user_verification_status = 'pending' THEN 1 ELSE NULL END) AS pending_number_of_users, ambassador_tier, ambassador_created_at FROM ambassadors LEFT JOIN users ON ambassadors.ambassador_id = users.user_ambassador_id GROUP BY ambassadors.ambassador_id ORDER BY ambassadors.ambassador_created_at DESC;";
 
     connection.query(queryString, function(err, results){
         if (err){
@@ -311,6 +311,20 @@ router.get("/ambassadors-info/:ambassadorIdentifier/number", adminAuthentication
 
 router.get("/ambassadors-info/:ambassadorIdentifier/verification-number", adminAuthentication, (req, res) => {
     const queryString = "SELECT COUNT(users.user_id) AS verified_number_of_users FROM users WHERE users.user_ambassador_id = ? AND users.user_verification_status = 'accepted'";
+
+    connection.query(queryString, req.params.ambassadorIdentifier, function(err, results){
+        if (err){
+            console.log("Search Error");
+
+            console.log(err);
+        } else{                     
+            res.json(results[0]);
+        }
+    });
+});
+
+router.get("/ambassadors-info/:ambassadorIdentifier/pending-number", adminAuthentication, (req, res) => {
+    const queryString = "SELECT COUNT(users.user_id) AS pending_number_of_users FROM users WHERE users.user_ambassador_id = ? AND users.user_verification_status = 'pending'";
 
     connection.query(queryString, req.params.ambassadorIdentifier, function(err, results){
         if (err){

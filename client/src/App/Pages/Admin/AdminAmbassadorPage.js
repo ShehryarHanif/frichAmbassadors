@@ -13,6 +13,7 @@ const AdminAmbassadorPage = (props) => {
   const [users, setUsers] = useState([]);
   const [numberOfUsers, setNumberOfUsers] = useState(null);
   const [verifiedNumberOfUsers, setVerifiedNumberOfUsers] = useState(null);
+  const [pendingNumberOfUsers, setPendingNumberOfUsers] = useState(null);
 
   const getAmbassador = () => {
     axios.get(`/api/ambassadors-info/${props.match.params.identifier}`)
@@ -42,12 +43,19 @@ const AdminAmbassadorPage = (props) => {
         .catch((err) => alert(err));
   };
 
+  const getPendingNumber = () => {
+    axios.get(`/api/ambassadors-info/${ambassador["ambassador_id"]}/pending-number`)
+      .then((response) => {setVerifiedNumberOfUsers(response.data["pending_number_of_users"])})
+        .catch((err) => alert(err));
+  };
+
   useEffect(() => {
     const getInformation = async () => {
       await getAmbassador();
       await getUsers();
       await getNumber();
       await getVerifiedNumber();
+      await getPendingNumber();
     }
 
     getInformation();
@@ -90,7 +98,7 @@ const AdminAmbassadorPage = (props) => {
   return (
     <div className={classes.adminAmbassadorPageBackground} >
       <AdminLayout widthOverride={classes.widthOverride}>
-        <AmbassadorInformation ambassador={ambassador} numberOfUsers={numberOfUsers} verifiedNumberOfUsers={verifiedNumberOfUsers} submissionHandler={submissionHandler} />
+        <AmbassadorInformation ambassador={ambassador} numberOfUsers={numberOfUsers} verifiedNumberOfUsers={verifiedNumberOfUsers} pendingNumberOfUsers={pendingNumberOfUsers} submissionHandler={submissionHandler} />
 
         <AdminUsersTable users={users} rejectHandler={rejectHandler} restoreHandler={restoreHandler} acceptHandler={acceptHandler}/>
       </AdminLayout>

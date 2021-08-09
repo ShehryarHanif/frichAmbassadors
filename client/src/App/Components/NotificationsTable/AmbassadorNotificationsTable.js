@@ -33,7 +33,7 @@ const AmbassadorNotificationsTable = () => {
                         <tr key={notification["notification_id"]} className={`${classes.notificationRow} ${classes.regularCell}`}>
                             <td>{notification["notification_subject"]}</td>
                             <td>{notification["notification_content"]}</td>
-                            <td>{Date(notification["notification_created_at"])}</td>
+                            <td>{notification["notification_created_at"]}</td>
                         </tr>
                         )
                     }) }

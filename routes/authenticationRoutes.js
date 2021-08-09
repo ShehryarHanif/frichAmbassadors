@@ -93,7 +93,7 @@ router.get("/log-out", (req, res) => {
     if (!token) {
         res.status(401).send("Unauthorized: No Token Provided");
     } else {
-        res.cookie("token", "DELETED", { MaxAge: "-1" });
+        res.cookie("token", "DELETED", { secure: true, MaxAge: "-1" });
 
         res.sendStatus(200);
     }

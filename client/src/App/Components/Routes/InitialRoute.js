@@ -1,82 +1,54 @@
 import { useState, useEffect } from "react";
 import { Redirect, Route } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import axios from "axios";
+
+import { loginActions } from "../../store/loginStore";
 
 const InitialRoute = ({ component: Component, ...restOfProps }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [doRedirectToAdmin, setDoRedirectToAdmin] = useState(true);
     const [doRedirectToAmbassador, setDoRedirectToAmbassador] = useState(true);
 
-    // const authenticationCheck = () => {
-    //     axios.get(`/authentication/check-admin-token/`)
-    //     .then((response) => {
-            
-    //        console.log(response);
- 
-    //       if(response.status === 200){
-    //         setIsLoading(false);
-    //       } else {
-    //         throw new Error("There was a problem");
-
-    //       }
-    //     }).catch((err) => {
-    //         console.log(err)
-
-    //         setDoRedirectToAdmin(false);
-
-    //         axios.get("/authentication/check-ambassador-token/")
-    //             .then((newResponse) => {
-    //                 console.log(newResponse);
-                    
-    //                 if(newResponse.status === 200){
-    //                     setIsLoading(false);
-    //                 } else {
-    //                     throw new Error("There was another problem");
-    //                 }
-    //             }).catch((error) => {
-    //                 console.log(error);
-
-    //                 console.log("YOUOOUOUOU");
-
-    //                 setIsLoading(false);
-    //                 setDoRedirectToAmbassador(false);
-    //             });
-    //     });
-    // };
+    const dispatch = useDispatch();
 
     const authenticationCheckOne = () => {
-        axios.get(`/authentication/check-admin-token/`)
+        axios.get("/authentication/check-admin-token/")
         .then((response) => {
             console.log(response);
 
           if(response.status === 200){
+            dispatch(loginActions.setValue(true));
+
             setIsLoading(false);
           } else {
               throw new Error("There was a problem")
           }
         }).catch((err) => {
-              console.log(err);
+            dispatch(loginActions.setValue(false));
 
-              setDoRedirectToAdmin(false);
+            setDoRedirectToAdmin(false);
           });
     }
     
     const authenticationCheckTwo = () => {
-        axios.get(`/authentication/check-ambassador-token/`)
+        axios.get("/authentication/check-ambassador-token/")
         .then((response) => {
             console.log(response);
 
           if(response.status === 200){
+            dispatch(loginActions.setValue(true));
+
             setIsLoading(false);
           } else {
               throw new Error("There was a problem")
           }
         }).catch((err) => {
-              console.log(err);
+            dispatch(loginActions.setValue(false));
 
-              setDoRedirectToAmbassador(false);
-              setIsLoading(false);
+            setDoRedirectToAmbassador(false);
+            setIsLoading(false);
           });
     }
         
@@ -88,7 +60,6 @@ const InitialRoute = ({ component: Component, ...restOfProps }) => {
 
         authenticationChecks();
     }, []);
-
 
     const AdminRedirectRender = () => <Redirect to="/admin" />;
 

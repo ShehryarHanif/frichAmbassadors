@@ -42,7 +42,7 @@ const AdminAuthenticationForm = (props) => {
       headers: {"Content-Type": "application/json"}
     })
       .then(() => {
-        dispatch(loginActions.toggle());
+        dispatch(loginActions.setValue(true));
         
         history.replace("/ambassador");
     })

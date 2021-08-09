@@ -18,7 +18,7 @@ const LogoutButton = () => {
         axios.get(`/authentication/log-out/`)
         .then((response) => {
           if(response.status === 200){
-            dispatch(loginActions.toggle());
+            dispatch(loginActions.setValue(false));
 
             history.push("/");
           } else {

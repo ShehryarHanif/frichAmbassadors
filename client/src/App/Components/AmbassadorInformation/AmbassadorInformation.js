@@ -17,6 +17,7 @@ const AmbassadorInformation = (props) => {
             {/* <th>Tier</th> */}
             <th>INSTAGRAM</th>
             <th>TIKTOK</th>
+            <th>ACCEPTANCE DATE</th>
             <th>APPLICATION LINK</th>
           </tr>
 
@@ -33,6 +34,7 @@ const AmbassadorInformation = (props) => {
             {/* <td>{props.ambassador["ambassador_tier"].toUpperCase()}</td> */}
             <td>{props.ambassador["ambassador_instagram"] || "—"}</td>
             <td>{props.ambassador["ambassador_tiktok"] || "—"}</td>
+            <td>{props.ambassador["ambassador_created_at"].substring(0, 10)}</td>
             <td><button className={classes.applicationButton} onClick={props.submissionHandler.bind(null, props.ambassador["ambassador_applicant_id"])} >GO TO APPLICATION</button></td>
           </tr>
         </table>

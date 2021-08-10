@@ -1,3 +1,47 @@
 .mainContainer {
-    border: 2px solid black;
+    background: white;
+    font-family: "Montserrat", sans-serif;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3%;
+    color: #4300F7;
+    font-size: 0.5rem;
+}
+  
+.ambassadorRow {
+    padding: 15px 0;
+    text-align: center;
+}
+
+.ambassadorsTable {
+    width: 100%;
+}
+
+.ambassadorsTable td, .ambassadorsTable th{
+    overflow: hidden;
+    white-space: nowrap;
+    width: 10%;
+    padding: 10px;
+    text-align: center;
+}
+
+.regularCell{
+    clear: both;
+    border-top: #4300F7 2px solid;
+    border-bottom: none;
+}
+
+.ambassadorButton {
+    border: #4300F7 2px solid;
+    color: #4300F7;
+    background: white;
+}
+
+.ambassadorButton:hover {
+    border: white 2px solid;
+    color: white;
+    background: #4300F7;
 }

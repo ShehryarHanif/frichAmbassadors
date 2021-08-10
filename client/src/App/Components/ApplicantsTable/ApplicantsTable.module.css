@@ -1,3 +1,63 @@
 .mainContainer {
-    border: 2px solid black;
+    background: white;
+    font-family: "Montserrat", sans-serif;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3%;
+    color: #4300F7;
+    font-size: 0.8rem;
+}
+  
+.applicantRow {
+    padding: 15px 0;
+    text-align: center;
+}
+
+.applicantsTable {
+    width: 100%;
+}
+
+.applicantsTable td, .applicantsTable th{
+    overflow: hidden;
+    white-space: nowrap;
+    width: 20%;
+    padding: 10px;
+    text-align: center;
+}
+
+.regularCell{
+    clear: both;
+    border-top: #4300F7 2px solid;
+    border-bottom: none;
+}
+
+.pendingColor {
+    color: black;
+}
+
+.rejectedColor {
+    color: #FF6E00;
+}
+
+.emailedColor {
+    color: #4300F7;
+}
+
+.acceptedColor {
+    color: #B4D852;
+}
+
+.applicationButton {
+    border: #4300F7 2px solid;
+    color: #4300F7;
+    background: white;
+}
+
+.applicationButton:hover {
+    border: white 2px solid;
+    color: white;
+    background: #4300F7;
 }

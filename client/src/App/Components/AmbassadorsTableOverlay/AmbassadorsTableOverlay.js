@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { DropdownButton, Dropdown } from "react-bootstrap";
 
 import AmbassadorsTable from "../AmbassadorsTable/AmbassadorsTable";
 
@@ -12,30 +13,30 @@ const AmbassadorsTableOverlay = (props) => {
         setAmbassadors(props.ambassadors);
     }, [props.ambassadors]);
 
-    const menuHandler = (event) => {
-        setSelectedSort(event.target.value);
+    const menuHandler = (eventKey) => {
+        setSelectedSort(eventKey.split("_").join(" "));
 
-        if (event.target.value === "date"){
+        if (eventKey === "date"){
             setAmbassadors(props.ambassadors);
         } else {
             const requiredAmbassadors = props.ambassadors;
 
-            setAmbassadors([...requiredAmbassadors].sort((ambassadorOne, ambassadorTwo) => parseInt(ambassadorTwo[event.target.value], 10) - parseInt(ambassadorOne[event.target.value], 10)));
+            setAmbassadors([...requiredAmbassadors].sort((ambassadorOne, ambassadorTwo) => parseInt(ambassadorTwo[eventKey], 10) - parseInt(ambassadorOne[eventKey], 10)));
         }
     };
 
     return (
         <div className={classes.mainContainer}>
             <div className={classes.sortContainer} >
-                <div>SORT:</div>
+                <div className={classes.sortHeading}>SORT BASED ON COLUMN</div>
 
-                <div>
-                    <select value={selectedSort} onChange={menuHandler}>
-                        <option value="date">DATE</option>
-                        <option value="number_of_users">NUMBER OF USERS</option>
-                        <option value="verified_number_of_users">NUMBER OF ACCEPTED USERS</option>
-                        <option value="pending_number_of_users">NUMBER OF PENDING USERS</option>
-                    </select>
+                <div className={classes.dropdownMenu}>
+                    <DropdownButton title={selectedSort.toUpperCase()} onSelect={menuHandler} id="dropdown-menu-align-center">
+                        <Dropdown.Item eventKey="date">DATE</Dropdown.Item>
+                        <Dropdown.Item eventKey="number_of_users">NUMBER OF USERS</Dropdown.Item>
+                        <Dropdown.Item eventKey="verified_number_of_users">NUMBER OF ACCEPTED USERS</Dropdown.Item>
+                        <Dropdown.Item eventKey="pending_number_of_users">NUMBER OF PENDING USERS</Dropdown.Item>
+                    </DropdownButton>
                 </div>
             </div>
 

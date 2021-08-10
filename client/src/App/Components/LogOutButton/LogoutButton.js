@@ -3,8 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 
 import axios from "axios";
 
-import { loginActions } from "../../store/loginStore";
-
 import classes from "./LogoutButton.module.css";
 
 const LogoutButton = () => {
@@ -18,8 +16,6 @@ const LogoutButton = () => {
         axios.get(`/authentication/log-out/`)
         .then((response) => {
           if(response.status === 200){
-            dispatch(loginActions.setValue(false));
-
             history.push("/");
           } else {
               throw new Error("There was a problem")

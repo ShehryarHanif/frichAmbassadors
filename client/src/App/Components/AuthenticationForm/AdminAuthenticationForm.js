@@ -4,8 +4,6 @@ import { useDispatch } from "react-redux";
 
 import axios from "axios";
 
-import { loginActions } from "../../store/loginStore";
-
 import classes from "./AdminAuthenticationForm.module.css";
 
 const AdminAuthenticationForm = (props) => {
@@ -42,8 +40,6 @@ const AdminAuthenticationForm = (props) => {
       headers: {"Content-Type": "application/json"}
     })
       .then(() => {
-        dispatch(loginActions.setValue(true));
-
         history.replace("/admin");
     })
         .catch(() => alert("OOPS! THERE WAS A PROBLEM. TRY AGAIN!"));

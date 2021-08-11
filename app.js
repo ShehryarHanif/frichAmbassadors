@@ -23,7 +23,7 @@ app.use(morgan("combined"));
 app.use(helmet());
 
 const corsOptions = {
-    origin: "https://frich-ambassadors.herokuapp.com",
+    origin: process.env.SPECIAL_DOMAIN || "https://frich-ambassadors.herokuapp.com",
     credentials: true
 };
   

@@ -17,11 +17,7 @@ const AdminAmbassadorPage = (props) => {
 
   const getAmbassador = () => {
     axios.get(`/api/ambassadors-info/${props.match.params.identifier}`)
-      .then((response) => {
-        console.log(response)
-
-        setAmbassador(response.data)
-      } )
+      .then((response) => {setAmbassador(response.data)})
         .catch((err) => alert(err));
   };
 

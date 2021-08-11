@@ -41,7 +41,7 @@ const AdminAmbassadorPage = (props) => {
 
   const getPendingNumber = () => {
     axios.get(`/api/ambassadors-info/${ambassador["ambassador_id"]}/pending-number`)
-      .then((response) => {setVerifiedNumberOfUsers(response.data["pending_number_of_users"])})
+      .then((response) => {setPendingNumberOfUsers(response.data["pending_number_of_users"])})
         .catch((err) => alert(err));
   };
 

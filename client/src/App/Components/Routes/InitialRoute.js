@@ -6,7 +6,7 @@ import axios from "axios";
 
 import { loginActions } from "../../store/loginStore";
 
-const InitialRoute = ({ component: Component, ...restOfProps }) => {
+const InitialRoute = ({ component: Component, specialRedirect, ...restOfProps }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [doRedirectToAdmin, setDoRedirectToAdmin] = useState(true);
     const [doRedirectToAmbassador, setDoRedirectToAmbassador] = useState(true);
@@ -71,7 +71,7 @@ const InitialRoute = ({ component: Component, ...restOfProps }) => {
         return (
           <div></div>  
         );
-    } else if(doRedirectToAdmin){
+    } else if(doRedirectToAdmin && specialRedirect !== true){
         return (
             <Route {...restOfProps} render={AdminRedirectRender} />
         );

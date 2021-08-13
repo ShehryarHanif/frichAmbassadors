@@ -1,14 +1,11 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
 
 import axios from "axios";
 
 import classes from "./AdminAuthenticationForm.module.css";
 
 const AdminAuthenticationForm = (props) => {
-  const dispatch = useDispatch();
-
   const [adminEmail, setAdminEmail] = useState("");
   const [adminPassword, setAdminPassword] = useState("");
 
